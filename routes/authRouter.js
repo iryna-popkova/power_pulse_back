@@ -2,15 +2,9 @@ const express = require("express");
 
 const { ctrlWrapper } = require("../helpers/index.js");
 
-const {
-  register,
-  login,
-  getCurrent,
-  logout,
-  updateAvatar,
-} = require("../controllers/index.js");
+const { register, login, logout } = require("../controllers/index.js");
 
-const { validateBody, authenticate, upload } = require("../midleware");
+const { validateBody, authenticate } = require("../midleware");
 
 const { schemas } = require("../models/user.js");
 
@@ -34,4 +28,5 @@ authRouter.patch(
   upload.single("avatar"),
   ctrlWrapper(updateAvatar)
 );
+
 module.exports = authRouter;
