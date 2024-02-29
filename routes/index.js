@@ -1,5 +1,5 @@
 const authRouter = require("./authRoutes");
-const dairyRouter = require("./dairyRoutes");
+const diaryRouter = require("./diaryRoutes");
 const productsRouter = require("./productsRoutes");
 
-module.exports = { authRouter, dairyRouter, productsRouter };
+module.exports = { authRouter, diaryRouter, productsRouter };
