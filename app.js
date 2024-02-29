@@ -15,7 +15,7 @@ app.use(morgan("tiny"));
 app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
-app.use(swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+// app.use(swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use("/users", authRouter);
 
