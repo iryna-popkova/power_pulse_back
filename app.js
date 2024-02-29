@@ -1,4 +1,6 @@
 const express = require("express");
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger.json");
 const morgan = require("morgan");
 const cors = require("cors");
 const dotenv = require("dotenv");
@@ -13,9 +15,9 @@ app.use(morgan("tiny"));
 app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
+app.use(swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-// app.use("/users", authRouter);
-// app.use("/api/contacts", contactsRouter);
+app.use("/users", authRouter);
 
 app.use((_, res) => {
   res.status(404).json({ message: "Route not found" });

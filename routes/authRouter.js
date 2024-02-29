@@ -2,9 +2,15 @@ const express = require("express");
 
 const { ctrlWrapper } = require("../helpers/index.js");
 
-const { register, login, logout } = require("../controllers/index.js");
+const {
+  register,
+  login,
+  logout,
+  updateAvatar,
+  getCurrent,
+} = require("../controllers/authControllers");
 
-const { validateBody, authenticate } = require("../midleware");
+const { validateBody, authenticate, upload } = require("../midleware");
 
 const { schemas } = require("../models/user.js");
 
