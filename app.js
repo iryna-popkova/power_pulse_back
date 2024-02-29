@@ -5,7 +5,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
-const { authRouter, dairyRouter, productsRouter } = require("./routes");
+const { authRouter, diaryRouter, productsRouter } = require("./routes");
 
 dotenv.config();
 const { DB_HOST } = process.env;
@@ -19,7 +19,7 @@ app.use(express.static("public"));
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use("/users", authRouter);
-app.use("/diary", dairyRouter);
+app.use("/diary", diaryRouter);
 app.use("/products", productsRouter);
 
 app.use((_, res) => {

@@ -10,34 +10,34 @@ const {
   getDiaryInfo,
 } = require("../controllers/diaryControllers");
 
-const dairyRouter = express.Router();
+const diaryRouter = express.Router();
 
-dairyRouter.post(
+diaryRouter.post(
   "/products",
   authenticate,
   validateBody(diarySchemas.productsSchema),
   ctrlWrapper(addDiaryProducts)
 );
 
-dairyRouter.post(
+diaryRouter.post(
   "/exercises",
   authenticate,
   validateBody(diarySchemas.exercisesSchema),
   ctrlWrapper(addDiaryExercises)
 );
 
-dairyRouter.delete(
+diaryRouter.delete(
   "/products/:id",
   authenticate,
   ctrlWrapper(deleteDiaryProducts)
 );
 
-dairyRouter.delete(
+diaryRouter.delete(
   "/exercises/:id",
   authenticate,
   ctrlWrapper(deleteDiaryExercises)
 );
 
-dairyRouter.get("/:date", authenticate, ctrlWrapper(getDiaryInfo));
+diaryRouter.get("/:date", authenticate, ctrlWrapper(getDiaryInfo));
 
-module.exports = dairyRouter;
+module.exports = diaryRouter;
