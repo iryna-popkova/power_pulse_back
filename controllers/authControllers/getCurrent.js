@@ -1,9 +1,22 @@
 const getCurrent = async (req, res) => {
-  const { email, name } = req.user;
+  const user = req.user;
 
-  res.json({
-    email,
-    name,
+  res.status(200).json({
+    user: {
+      name: user.name,
+      email: user.email,
+      blood: user.blood,
+      sex: user.sex,
+      height: user.height,
+      currentWeight: user.currentWeight,
+      desiredWeight: user.desiredWeight,
+      levelActivity: user.levelActivity,
+      avatarURL: user.avatarURL,
+      birthday: user.birthday,
+      createdAt: user.createdAt,
+    },
+    bmr: user.bmr,
+    token: user.token,
   });
 };
 

@@ -25,4 +25,5 @@ const productsSchema = new Schema({
 });
 
 const Product = model("product", productsSchema);
+
 module.exports = { Product };

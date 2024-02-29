@@ -2,8 +2,8 @@
   "openapi": "3.0.1",
   "info": {
     "version": "2.0.2",
-    "title": "Swagger test",
-    "description": "Showing off swagger-ui-express",
+    "title": "Power pulse back",
+    "description": "Documentation for power pulse back",
     "license": {
       "name": "MIT",
       "url": "https://opensource.org/licenses/MIT"

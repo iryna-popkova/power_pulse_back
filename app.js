@@ -5,7 +5,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
-const authRouter = require("./routes/authRouter.js");
+const { authRouter, dairyRouter, productsRouter } = require("./routes");
 
 dotenv.config();
 const { DB_HOST } = process.env;
@@ -16,8 +16,11 @@ app.use(morgan("tiny"));
 app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use("/users", authRouter);
+app.use("/diary", dairyRouter);
+app.use("/products", productsRouter);
 
 app.use((_, res) => {
   res.status(404).json({ message: "Route not found" });

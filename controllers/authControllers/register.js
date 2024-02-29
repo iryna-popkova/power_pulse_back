@@ -1,4 +1,4 @@
-const { User } = require("../../models/user");
+const { User } = require("../../models");
 const { HttpError } = require("../../helpers");
 const bcrypt = require("bcrypt");
 const gravatar = require("gravatar");
@@ -22,7 +22,6 @@ const register = async (req, res) => {
 
   res.status(201).json({
     email: newUser.email,
-    subscription: newUser.subscription,
   });
 };
 

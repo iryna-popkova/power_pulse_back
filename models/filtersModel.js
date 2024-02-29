@@ -13,4 +13,5 @@ const filtersSchema = new Schema({
 });
 
 const Filter = model("filter", filtersSchema);
+
 module.exports = { Filter };
