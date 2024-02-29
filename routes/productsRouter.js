@@ -6,7 +6,7 @@ const { authenticate } = require("../midleware");
 
 const {
   filteredProducts,
-  productsCategories,
+  productsCategoriesList,
 } = require("../controllers/productsControllers");
 
 const productsRouter = express.Router();
@@ -14,7 +14,7 @@ const productsRouter = express.Router();
 productsRouter.get(
   "/categories",
   authenticate,
-  ctrlWrapper(productsCategories)
+  ctrlWrapper(productsCategoriesList)
 );
 
 productsRouter.get("/filter", authenticate, ctrlWrapper(filteredProducts));
