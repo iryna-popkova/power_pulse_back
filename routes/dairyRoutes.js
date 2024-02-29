@@ -1,7 +1,7 @@
 const express = require("express");
 const { validateBody, authenticate } = require("../midleware");
 const { ctrlWrapper } = require("../helpers");
-const { schemas } = require("../models");
+const { diarySchemas } = require("../models");
 const {
   addDiaryProducts,
   addDiaryExercises,
@@ -15,14 +15,14 @@ const diaryRouter = express.Router();
 diaryRouter.post(
   "/products",
   authenticate,
-  validateBody(schemas.productsSchema),
+  validateBody(diarySchemas.productsSchema),
   ctrlWrapper(addDiaryProducts)
 );
 
 diaryRouter.post(
   "/exercises",
   authenticate,
-  validateBody(schemas.exercisesSchema),
+  validateBody(diarySchemas.exercisesSchema),
   ctrlWrapper(addDiaryExercises)
 );
 
