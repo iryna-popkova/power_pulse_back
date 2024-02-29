@@ -2,9 +2,7 @@ const express = require("express");
 
 const { ctrlWrapper } = require("../helpers");
 
-const { authenticate, validateBody } = require("../midleware");
-
-const { ProductsCategory } = require("../models");
+const { authenticate } = require("../midleware");
 
 const {
   filteredProducts,
@@ -13,12 +11,7 @@ const {
 
 const productsRouter = express.Router();
 
-productsRouter.get(
-  "/categories",
-  authenticate,
-  validateBody(ProductsCategory.categoriesSchema),
-  ctrlWrapper(productsCategoriesList)
-);
+productsRouter.get("/categories", authenticate, productsCategoriesList);
 
 productsRouter.get("/filter", authenticate, ctrlWrapper(filteredProducts));
 
