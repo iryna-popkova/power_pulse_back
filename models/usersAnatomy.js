@@ -19,4 +19,5 @@ const usersAnatomySchema = new Schema(
 );
 
 const UsersAnatomy = model("usersAnatomy", usersAnatomySchema);
+
 module.exports = { UsersAnatomy };

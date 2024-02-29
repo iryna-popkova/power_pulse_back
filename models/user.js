@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-const { handleMongooseError } = require("../helpers");
+const handleMongooseError = require("../midleware/handleMongooseError");
 
 const Joi = require("joi");
 
@@ -92,7 +92,7 @@ const userSchema = new Schema(
     },
     verificationToken: {
       type: String,
-      required: [true, "Verify token is required"],
+      // required: [true, "Verify token is required"],
       default: null,
     },
     confirmationOfVerification: {

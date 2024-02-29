@@ -1,11 +1,12 @@
 const express = require("express");
-const swaggerUi = require("swagger-ui-express");
-const swaggerDocument = require("./swagger.json");
+// const swaggerUi = require("swagger-ui-express");
+// const swaggerDocument = require("./swagger.json");
 const morgan = require("morgan");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const authRouter = require("./routes/authRouter.js");
+const diaryRouter = require("./routes/dairyRoutes.js");
 
 dotenv.config();
 const { DB_HOST } = process.env;
@@ -18,6 +19,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 app.use("/users", authRouter);
+app.use("/diary", diaryRouter);
 
 app.use((_, res) => {
   res.status(404).json({ message: "Route not found" });
