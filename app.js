@@ -1,6 +1,6 @@
 const express = require("express");
-// const swaggerUi = require("swagger-ui-express");
-// const swaggerDocument = require("./swagger.json");
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger.json");
 const morgan = require("morgan");
 const cors = require("cors");
 const dotenv = require("dotenv");
