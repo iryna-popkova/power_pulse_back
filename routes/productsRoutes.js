@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { ctrlWrapper } = require("../helpers");
+// const { ctrlWrapper } = require("../helpers");
 
 const { authenticate } = require("../midleware");
 
@@ -13,6 +13,6 @@ const productsRouter = express.Router();
 
 productsRouter.get("/categories", authenticate, productsCategoriesList);
 
-productsRouter.get("/filter", authenticate, ctrlWrapper(filteredProducts));
+productsRouter.get("/filter", authenticate, filteredProducts);
 
 module.exports = productsRouter;
