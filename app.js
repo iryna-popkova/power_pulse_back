@@ -5,6 +5,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+const authRouter = require("./routes/authRouter.js");
 
 dotenv.config();
 const { DB_HOST } = process.env;
