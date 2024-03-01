@@ -9,8 +9,8 @@
       "url": "https://github.com/iryna-popkova/power_pulse_back"
     }
   },
-  "consumes": ["application/json", "multipart/form-data"],
-  "produces": ["application/json", "multipart/form-data"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
   "servers": [
     { "url": "https://power-pulse-back.onrender.com" },
     {
@@ -37,7 +37,7 @@
   ],
 
   "paths": {
-    "/users/register": {
+    "users/register": {
       "post": {
         "tags": ["Auth"],
         "summary": "User registration",
@@ -66,7 +66,7 @@
             }
           },
           "400": {
-            "description": "Bad request (invalid request body)",
+            "description": "Bad request",
             "content": {}
           },
           "409": {
@@ -106,11 +106,11 @@
             }
           },
           "400": {
-            "description": "Bad request (invalid request body)",
+            "description": "Bad request",
             "content": {}
           },
           "401": {
-            "description": "Unauthorized (invalid credentials)",
+            "description": "Unauthorized",
             "content": {}
           }
         }
@@ -378,6 +378,284 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ProductsFilterResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {}
+          },
+          "404": {
+            "description": "Not found",
+            "content": {}
+          },
+          "500": {
+            "description": "Server error",
+            "content": {}
+          }
+        }
+      }
+    },
+    "exercises/filter": {
+      "get": {
+        "tags": ["Exercises"],
+        "summary": "Get required exercises",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "filter",
+            "schema": {
+              "type": "string",
+              "enum": ["Body parts", "Equipment", "Muscles"],
+              "default": ""
+            },
+            "description": "Filter for exercises"
+          }
+        ],
+        "security": [{ "Bearer": [] }],
+        "responses": {
+          "201": {
+            "description": "Successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExercisesResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {}
+          },
+          "404": {
+            "description": "Not found",
+            "content": {}
+          },
+          "500": {
+            "description": "Server error",
+            "content": {}
+          }
+        }
+      }
+    },
+    "exercises/filter/{category}": {
+      "get": {
+        "tags": ["Exercises"],
+        "summary": "Get categories of exercises",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "category",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "chest",
+                "upper legs",
+                "upper arms",
+                "lower arms",
+                "lower legs",
+                "shoulders",
+                "waist",
+                "cardio",
+                "back",
+                "neck"
+              ],
+              "default": ""
+            },
+            "description": "Exercises by body part"
+          }
+        ],
+        "security": [{ "Bearer": [] }],
+        "responses": {
+          "201": {
+            "description": "Successful creation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExercisesBodyPartResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {}
+          },
+          "404": {
+            "description": "Not found",
+            "content": {}
+          },
+          "500": {
+            "description": "Server error",
+            "content": {}
+          }
+        }
+      }
+    },
+    "diary/products": {
+      "post": {
+        "tags": ["Diary"],
+        "summary": "User diary products",
+        "parameters": [],
+        "security": [{ "Bearer": [] }],
+        "requestBody": {
+          "description": "Diary object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DiaryProductRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DiaryProductResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {}
+          },
+          "500": {
+            "description": "Server error",
+            "content": {}
+          }
+        }
+      }
+    },
+    "diary/products/{id}": {
+      "delete": {
+        "tags": ["Diary"],
+        "summary": "Delete user diary products",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "Diary product ID",
+            "example": "5d51694902b2373622ff5773"
+          }
+        ],
+        "security": [{ "Bearer": [] }],
+        "responses": {
+          "201": {
+            "description": "Product deleted from diary successfully",
+            "content": {}
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {}
+          },
+          "404": {
+            "description": "Product not found in diary",
+            "content": {}
+          },
+          "500": {
+            "description": "Server error",
+            "content": {}
+          }
+        }
+      }
+    },
+    "diary/exercises": {
+      "post": {
+        "tags": ["Diary"],
+        "summary": "User diary exercises",
+        "parameters": [],
+        "security": [{ "Bearer": [] }],
+        "requestBody": {
+          "description": "Diary object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DiaryExercisesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DiaryExercisesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {}
+          },
+          "500": {
+            "description": "Server error",
+            "content": {}
+          }
+        }
+      }
+    },
+
+    "diary/exercises/{id}": {
+      "delete": {
+        "tags": ["Diary"],
+        "summary": "Delete user diary exercises",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "Diary exercise ID",
+            "example": "64f2458d6f67bc34bae4f813"
+          }
+        ],
+        "security": [{ "Bearer": [] }],
+        "responses": {
+          "201": {
+            "description": "Exercise deleted from diary",
+            "content": {}
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {}
+          },
+          "404": {
+            "description": "Exercise not found in diary",
+            "content": {}
+          },
+          "500": {
+            "description": "Server error",
+            "content": {}
+          }
+        }
+      }
+    },
+    "diary/{date}": {
+      "get": {
+        "tags": ["Diary"],
+        "summary": "Get diary by date",
+        "parameters": [],
+        "security": [{ "Bearer": [] }],
+        "responses": {
+          "201": {
+            "description": "Successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DiaryResponse"
                 }
               }
             }
