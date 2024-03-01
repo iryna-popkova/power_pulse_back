@@ -1,12 +1,12 @@
-const { Product } = require("../../models");
+const Product = require("../../models/productsModel");
 
 const filteredProducts = async (req, res) => {
   try {
     const userBloodType = req.user.blood;
     const products = await Product.find({
       $or: [
-        { groupBloodNotAllowed: { $exists: false } }, // Products without blood restrictions
-        { [`groupBloodNotAllowed.${userBloodType}`]: { $exists: false } }, // Products where the user's blood type is not restricted
+        { groupBloodNotAllowed: { $exists: false } },
+        { [`groupBloodNotAllowed.${userBloodType}`]: { $exists: false } },
       ],
     });
 
