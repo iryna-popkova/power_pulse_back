@@ -18,7 +18,7 @@ const productsSchema = new Schema({
     required: true,
   },
   groupBloodNotAllowed: {
-    type: Map,
+    type: Object,
     of: Boolean,
     required: true,
   },

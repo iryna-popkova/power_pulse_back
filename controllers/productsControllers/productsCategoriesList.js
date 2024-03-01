@@ -9,7 +9,7 @@ const productCategoriesList = (req, res) => {
 
   fs.readFile(filePath, "utf8", (err, data) => {
     if (err) {
-      return res.status(500).json({ message: "Error reading file" });
+      return res.status(500).json({ message: "Internal Server Error" });
     }
 
     try {
