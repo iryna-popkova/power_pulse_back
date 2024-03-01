@@ -1,4 +1,4 @@
-const { User } = require("../../models/user");
+const { User } = require("../../models");
 const calculateBMR = require("../../utils/calculateBMR");
 
 const updateUserParams = async (req, res) => {
