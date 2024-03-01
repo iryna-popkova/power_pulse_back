@@ -22,6 +22,6 @@ const productsSchema = new Schema({
   },
 });
 
-const Product = model("productCategory", productsSchema, "products");
+const Product = model("product", productsSchema, "products");
 
 module.exports = Product;
