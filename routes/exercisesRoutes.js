@@ -1,15 +1,17 @@
 const express = require("express");
 
-const { authenticate } = require("../midleware");
-
-const {
-  getAllExercises,
-  exercisesFilter,
-} = require("../controllers/exercisesControllers");
-
 const exerciseRouter = express.Router();
 
-exerciseRouter.get("/", authenticate, getAllExercises);
-exerciseRouter.get("/filter", authenticate, exercisesFilter);
+const { authenticate } = require("../midleware");
+
+const ctrl = require("../controllers/exercisesControllers");
+
+exerciseRouter.get("/", authenticate, ctrl.getAllExercisesName);
+
+exerciseRouter.get("/bodyparts", authenticate, ctrl.getAllBodyParts);
+
+exerciseRouter.get("/muscles", authenticate, ctrl.getAllMuscles);
+
+exerciseRouter.get("/equipments", authenticate, ctrl.getAllEquipments);
 
 module.exports = exerciseRouter;

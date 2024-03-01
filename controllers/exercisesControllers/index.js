@@ -1,4 +1,13 @@
-const getAllExercises = require("./exercisesAll");
-const exercisesFilter = require("./exercisesFilter");
+const {
+  getAllExercisesName,
+  getAllBodyParts,
+  getAllMuscles,
+  getAllEquipments,
+} = require("./exercises");
 
-module.exports = { getAllExercises, exercisesFilter };
+module.exports = {
+  getAllExercisesName,
+  getAllBodyParts,
+  getAllMuscles,
+  getAllEquipments,
+};
