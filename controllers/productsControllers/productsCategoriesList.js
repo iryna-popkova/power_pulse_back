@@ -16,7 +16,7 @@ const productCategoriesList = (req, res) => {
       const categories = JSON.parse(data);
       res.status(200).json(categories);
     } catch (error) {
-      res.status(500).json({ message: "Error parsing JSON data" });
+      res.status(500).json({ message: "Internal Server Error" });
     }
   });
 };

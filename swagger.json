@@ -70,13 +70,12 @@
             "content": {}
           },
           "409": {
-            "description": "Provided email already exists",
+            "description": "Email already in use",
             "content": {}
           }
         }
       }
     },
-
     "/users/login": {
       "post": {
         "tags": ["Auth"],
@@ -84,7 +83,7 @@
         "parameters": [],
         "security": [{ "Bearer": [] }],
         "requestBody": {
-          "description": "Login's object",
+          "description": "Login person",
           "required": true,
           "content": {
             "application/json": {
@@ -96,7 +95,7 @@
         },
         "LoginResponse": {
           "201": {
-            "description": "Successful login",
+            "description": "Successful",
             "content": {
               "application/json": {
                 "schema": {
@@ -110,7 +109,7 @@
             "content": {}
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "Email or password invalid",
             "content": {}
           }
         }
@@ -125,7 +124,7 @@
         "security": [{ "Bearer": [] }],
         "responses": {
           "200": {
-            "description": "Successful operation",
+            "description": "Successful",
             "content": {
               "application/json": {
                 "schema": {
@@ -133,10 +132,6 @@
                 }
               }
             }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {}
           },
           "404": {
             "description": "Not found",
@@ -157,7 +152,7 @@
         "parameters": [],
         "security": [{ "Bearer": [] }],
         "requestBody": {
-          "description": "Updated user information",
+          "description": "Update user information",
           "required": true,
           "content": {
             "application/json": {
@@ -169,7 +164,7 @@
         },
         "responses": {
           "200": {
-            "description": "User information updated",
+            "description": "Successful",
             "content": {
               "application/json": {
                 "schema": {
@@ -204,7 +199,7 @@
         "parameters": [],
         "security": [{ "Bearer": [] }],
         "requestBody": {
-          "description": "Upload user avatar",
+          "description": "Upload new avatar",
           "required": true,
           "content": {
             "multipart/form-data": {
@@ -216,7 +211,7 @@
         },
         "responses": {
           "200": {
-            "description": "User avatar updated",
+            "description": "Successful",
             "content": {
               "application/json": {
                 "schema": {
@@ -252,7 +247,7 @@
         "security": [{ "Bearer": [] }],
         "responses": {
           "204": {
-            "description": "Successful logout",
+            "description": "Successful",
             "content": {
               "application/json": {
                 "schema": {
@@ -260,12 +255,9 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "description": "Successful user's logout"
+                      "description": "Logout from account"
                     }
                   }
-                },
-                "example": {
-                  "message": "You have logout successful"
                 }
               }
             }
