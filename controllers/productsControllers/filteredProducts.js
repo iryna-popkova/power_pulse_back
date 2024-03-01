@@ -5,8 +5,10 @@ const filteredProducts = async (req, res) => {
     const userBloodType = req.user.blood;
     const products = await Product.find({
       $or: [
+        // If groupBloodNotAllowed field does not exist or is empty, allow the product
         { groupBloodNotAllowed: { $exists: false } },
-        { [`groupBloodNotAllowed.${userBloodType}`]: { $exists: false } },
+        // If the user's blood type is not explicitly denied for the product, allow it
+        { [`groupBloodNotAllowed.${userBloodType}`]: { $ne: true } },
       ],
     });
 
