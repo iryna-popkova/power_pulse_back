@@ -440,37 +440,15 @@
         }
       }
     },
-    "exercises/filter/{category}": {
+    "/exercises": {
       "get": {
         "tags": ["Exercises"],
         "summary": "Get categories of exercises",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "category",
-            "schema": {
-              "type": "string",
-              "enum": [
-                "chest",
-                "upper legs",
-                "upper arms",
-                "lower arms",
-                "lower legs",
-                "shoulders",
-                "waist",
-                "cardio",
-                "back",
-                "neck"
-              ],
-              "default": ""
-            },
-            "description": "Exercises by body part"
-          }
-        ],
+        "parameters": [],
         "security": [{ "Bearer": [] }],
         "responses": {
           "201": {
-            "description": "Successful creation",
+            "description": "Successful",
             "content": {
               "application/json": {
                 "schema": {
