@@ -1,7 +1,5 @@
 const express = require("express");
 
-const { ctrlWrapper } = require("../helpers/index.js");
-
 const { authenticate } = require("../midleware");
 
 const {
@@ -11,7 +9,7 @@ const {
 
 const exerciseRouter = express.Router();
 
-exerciseRouter.get("/", authenticate, ctrlWrapper(getAllExercises));
-exerciseRouter.get("/filter", authenticate, ctrlWrapper(exercisesFilter));
+exerciseRouter.get("/", authenticate, getAllExercises);
+exerciseRouter.get("/filter", authenticate, exercisesFilter);
 
 module.exports = exerciseRouter;
