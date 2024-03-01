@@ -5,7 +5,12 @@ const morgan = require("morgan");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
-const { authRouter, diaryRouter, productsRouter } = require("./routes");
+const {
+  authRouter,
+  diaryRouter,
+  productsRouter,
+  exerciseRouter,
+} = require("./routes");
 
 dotenv.config();
 const { DB_HOST } = process.env;
@@ -21,6 +26,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use("/users", authRouter);
 app.use("/diary", diaryRouter);
 app.use("/products", productsRouter);
+app.use("/exercises", exerciseRouter);
 
 app.use((_, res) => {
   res.status(404).json({ message: "Route not found" });
