@@ -1,4 +1,4 @@
-const productsCategoriesList = require("./productsCategoriesList");
 const filteredProducts = require("./filteredProducts");
+const productCategoriesList = require("./productCategoriesList");
 
-module.exports = { productsCategoriesList, filteredProducts };
+module.exports = { filteredProducts, productCategoriesList };

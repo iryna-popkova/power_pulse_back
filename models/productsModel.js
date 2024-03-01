@@ -19,11 +19,9 @@ const productsSchema = new Schema({
   },
   groupBloodNotAllowed: {
     type: Object,
-    of: Boolean,
-    required: true,
   },
 });
 
-const Product = model("product", productsSchema);
+const Product = model("productCategory", productsSchema, "products");
 
 module.exports = Product;

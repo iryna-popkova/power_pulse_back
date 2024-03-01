@@ -4,13 +4,12 @@ const { authenticate } = require("../midleware");
 
 const {
   filteredProducts,
-  productsCategoriesList,
+  productCategoriesList,
 } = require("../controllers/productsControllers");
 
 const productsRouter = express.Router();
 
-productsRouter.get("/categories", authenticate, productsCategoriesList);
-
-productsRouter.get("/filter", authenticate, filteredProducts);
+productsRouter.get("/", authenticate, filteredProducts);
+productsRouter.get("/categories", authenticate, productCategoriesList);
 
 module.exports = productsRouter;
