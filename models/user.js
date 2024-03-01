@@ -86,19 +86,6 @@ const userSchema = new Schema(
       type: Number,
       default: 0,
     },
-    // verify: {
-    //   type: Boolean,
-    //   default: true,
-    // },
-    // verificationToken: {
-    //   type: String,
-    //   // required: [true, "Verify token is required"],
-    //   default: null,
-    // },
-    // confirmationOfVerification: {
-    //   type: Number,
-    //   default: 0,
-    // },
   },
   {
     versionKey: false,
