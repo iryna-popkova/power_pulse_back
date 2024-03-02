@@ -1,13 +1,17 @@
 const {
-  getAllExercisesName,
-  getAllBodyParts,
-  getAllMuscles,
-  getAllEquipments,
+  // getAllExercisesName,
+  // getAllBodyParts,
+  // getAllMuscles,
+  // getAllEquipments,
+  getAllExercises,
+  getAllFilters,
 } = require("./exercises");
 
 module.exports = {
-  getAllExercisesName,
-  getAllBodyParts,
-  getAllMuscles,
-  getAllEquipments,
+  getAllExercises,
+  getAllFilters,
+  // getAllExercisesName,
+  // getAllBodyParts,
+  // getAllMuscles,
+  // getAllEquipments,
 };
