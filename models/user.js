@@ -112,7 +112,6 @@ const loginSchema = Joi.object({
 
 const updateParamsSchema = Joi.object({
   name: Joi.string().min(2).max(30).required(),
-  email: Joi.string().pattern(emailRegex).required(),
   blood: Joi.number().valid(1, 2, 3, 4).required(),
   sex: Joi.string().valid("male", "female").required(),
   height: Joi.number().min(150).required(),
