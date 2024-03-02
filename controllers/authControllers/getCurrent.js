@@ -16,6 +16,7 @@ const getCurrent = async (req, res) => {
       createdAt: user.createdAt,
     },
     bmr: user.bmr,
+    dailyRateSports: user.dailyRateSports,
     token: user.token,
   });
 };
