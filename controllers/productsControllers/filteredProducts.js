@@ -69,4 +69,4 @@ const filteredProducts = async (req, res) => {
   }
 };
 
-module.exports = { filteredProducts };
+module.exports = filteredProducts;
