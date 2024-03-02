@@ -9,7 +9,7 @@ const updateUserParams = async (req, res) => {
     });
 
     if (!updatedUser) {
-      return res.status(404).json({ message: "User not found" });
+      throw HttpError(404, "User not found");
     }
 
     const { desiredWeight, height, birthday, sex, levelActivity } = updatedUser;
@@ -40,8 +40,7 @@ const updateUserParams = async (req, res) => {
       bmr,
     });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Internal Server Error" });
+    throw HttpError(500, "Internal Server Error");
   }
 };
 

@@ -19,7 +19,7 @@ const calculateBMR = (desiredWeight, height, birthday, sex, levelActivity) => {
         activityLevelFactor[levelActivity]
     );
   } else {
-    throw new Error('Виберіть стать "male" або "female"');
+    throw new Error('Please select option "male" or "female"');
   }
 
   return bmr;

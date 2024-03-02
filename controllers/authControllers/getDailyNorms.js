@@ -1,6 +1,6 @@
 const { User } = require("../../models");
 const calculateBMR = require("../../utils/calculateBMR");
-const HttpError = require("../../helpers");
+const { HttpError } = require("../../helpers");
 
 const getDailyNorms = async (req, res) => {
   try {

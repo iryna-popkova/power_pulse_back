@@ -58,14 +58,14 @@ const ExerciseName = require("../../models/exercisesName");
 const Bodyparts = require("../../models/bodyParts");
 const Equipments = require("../../models/equipments");
 const Muscles = require("../../models/muscles");
+const { HttpError } = require("../../helpers");
 
 const getAllExercises = async (req, res) => {
   try {
     const exercises = await ExerciseName.find();
     res.status(200).json(exercises);
   } catch (error) {
-    console.error("Error retrieving exercises:", error);
-    res.status(500).json({ message: "Internal Server Error" });
+    throw HttpError(500, "Internal Server Error");
   }
 };
 
@@ -77,8 +77,7 @@ const getAllFilters = async (req, res) => {
 
     res.status(200).json({ bodyParts, equipments, muscles });
   } catch (error) {
-    console.error("Error retrieving filters:", error);
-    res.status(500).json({ message: "Internal Server Error" });
+    throw HttpError(500, "Internal Server Error");
   }
 };
 

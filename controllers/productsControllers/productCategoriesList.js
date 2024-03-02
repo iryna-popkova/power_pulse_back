@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { HttpError } = require("../../helpers");
 
 const productCategoriesList = (req, res) => {
   const filePath = path.join(
@@ -9,14 +10,14 @@ const productCategoriesList = (req, res) => {
 
   fs.readFile(filePath, "utf8", (err, data) => {
     if (err) {
-      return res.status(500).json({ message: "Internal Server Error" });
+      throw HttpError(500, "Internal Server Error");
     }
 
     try {
       const categories = JSON.parse(data);
       res.status(200).json(categories);
     } catch (error) {
-      res.status(500).json({ message: "Internal Server Error" });
+      throw HttpError(500, "Internal Server Error");
     }
   });
 };

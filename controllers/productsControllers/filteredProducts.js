@@ -64,8 +64,7 @@ const filteredProducts = async (req, res) => {
       notRecommendedProducts,
     });
   } catch (error) {
-    console.error("Error retrieving products:", error);
-    res.status(500).json({ message: "Internal Server Error" });
+    throw HttpError(500, "Internal Server Error");
   }
 };
 
