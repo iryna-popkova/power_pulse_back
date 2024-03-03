@@ -636,7 +636,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ExercisesBodyPartsResponse"
+                  "$ref": "#/components/schemas/ExercisesFiltersResponse"
                 }
               }
             }
@@ -670,7 +670,6 @@
             "name": "date",
             "required": true,
             "type": "string",
-            "example": "27/10/2023",
             "description": "Date for which to get diary"
           }
         ],
@@ -821,8 +820,7 @@
             "name": "id",
             "required": true,
             "type": "string",
-            "description": "Diary product ID",
-            "example": "5d51694902b2373622ff5773"
+            "description": "Diary product ID"
           }
         ],
         "security": [{ "Bearer": [] }],
@@ -875,8 +873,7 @@
             "name": "id",
             "required": true,
             "type": "string",
-            "description": "Diary exercise ID",
-            "example": "64f2458d6f67bc34bae4f801"
+            "description": "Diary exercise ID"
           }
         ],
         "security": [{ "Bearer": [] }],
@@ -1178,8 +1175,7 @@
           },
           "bmr": {
             "type": "number",
-            "description": "User's BMR",
-            "example": "2141"
+            "description": "User's BMR"
           }
         }
       },
@@ -1209,6 +1205,20 @@
         }
       },
 
+      "DailyNormsResponse": {
+        "type": "object",
+        "properties": {
+          "bmr": {
+            "type": "number",
+            "description": "bmr"
+          },
+          "dailyRateSports": {
+            "type": "number",
+            "description": "110"
+          }
+        }
+      },
+
       "CategoriesResponse": {
         "type": "object",
         "properties": {
@@ -1217,29 +1227,9 @@
             "type": "string",
             "description": "The names of product categories"
           }
-        },
-        "example": [
-          "alcoholic drinks",
-          "berries",
-          "cereals",
-          "dairy",
-          "dried fruits",
-          "eggs",
-          "fish",
-          "flour",
-          "fruits",
-          "meat",
-          "mushrooms",
-          "nuts",
-          "oils and fats",
-          "poppy",
-          "sausage",
-          "seeds",
-          "sesame",
-          "soft drinks",
-          "vegetables and herbs"
-        ]
+        }
       },
+
       "ProductsResponse": {
         "type": "array",
         "items": {
@@ -1328,7 +1318,7 @@
           "properties": {
             "_id": {
               "type": "string",
-              "description": "product id"
+              "description": "exercise id"
             },
             "filter": {
               "type": "string",
@@ -1341,6 +1331,47 @@
             "imgURL": {
               "type": "string",
               "description": "Exercises image"
+            }
+          }
+        }
+      },
+
+      "ExercisesFiltersResponse": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "string",
+              "description": "product id"
+            },
+            "bodyPart": {
+              "type": "string",
+              "description": "Body part type"
+            },
+            "equipment": {
+              "type": "string",
+              "description": "Equipment name"
+            },
+            "gifUrl": {
+              "type": "string",
+              "description": "Exercises gif"
+            },
+            "name": {
+              "type": "string",
+              "description": "Name"
+            },
+            "target": {
+              "type": "string",
+              "description": "Target name"
+            },
+            "burnedCalories": {
+              "type": "number",
+              "description": "Burned calories"
+            },
+            "time": {
+              "type": "number",
+              "description": "Exercise time"
             }
           }
         }
@@ -1529,8 +1560,7 @@
         "type": "object",
         "properties": {
           "message": {
-            "type": "string",
-            "example": "Product added to diary successfully"
+            "type": "string"
           },
           "data": {
             "type": "object",
