@@ -67,11 +67,23 @@
           },
           "400": {
             "description": "Bad request",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
           },
           "409": {
             "description": "Email already in use",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -94,7 +106,7 @@
           }
         },
         "LoginResponse": {
-          "201": {
+          "200": {
             "description": "Successful",
             "content": {
               "application/json": {
@@ -106,11 +118,23 @@
           },
           "400": {
             "description": "Bad request",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
           },
           "401": {
             "description": "Email or password invalid",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -122,6 +146,7 @@
         "summary": "Get current user",
         "parameters": [],
         "security": [{ "Bearer": [] }],
+        "requestBody": {},
         "responses": {
           "200": {
             "description": "Successful",
@@ -135,11 +160,84 @@
           },
           "404": {
             "description": "Not found",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
           },
           "500": {
             "description": "Server error",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "Unauthorized",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ErrorResponse"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/dailyNorms": {
+      "get": {
+        "tags": ["Auth"],
+        "summary": "Get user's daily norms",
+        "parameters": [],
+        "security": [{ "Bearer": [] }],
+        "requestBody": {},
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DailyNormsResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "Unauthorized",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ErrorResponse"
+              }
+            }
           }
         }
       }
@@ -175,19 +273,43 @@
           },
           "400": {
             "description": "Bad request",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthorized",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
           },
           "404": {
             "description": "User not found",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
           },
           "500": {
             "description": "Server error",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -222,19 +344,43 @@
           },
           "400": {
             "description": "Bad request",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthorized",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
           },
           "404": {
             "description": "User not found",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
           },
           "500": {
             "description": "Server error",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -264,15 +410,33 @@
           },
           "401": {
             "description": "Unauthorized",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
           },
           "404": {
             "description": "Not found",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
           },
           "500": {
             "description": "Server error",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -296,15 +460,33 @@
           },
           "401": {
             "description": "Unauthorized",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
           },
           "404": {
             "description": "Not found",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
           },
           "500": {
             "description": "Server error",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -312,7 +494,57 @@
     "/products": {
       "get": {
         "tags": ["Products"],
-        "summary": "Get recomended and not recomended products by blood type",
+        "summary": "Get list of all products in database",
+        "parameters": [],
+        "security": [{ "Bearer": [] }],
+        "responses": {
+          "201": {
+            "description": "Successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductsResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products/filter": {
+      "get": {
+        "tags": ["Products"],
+        "summary": "Get list of filtered products",
         "parameters": [],
         "security": [{ "Bearer": [] }],
         "responses": {
@@ -328,19 +560,38 @@
           },
           "401": {
             "description": "Unauthorized",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
           },
           "404": {
             "description": "Not found",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
           },
           "500": {
             "description": "Server error",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
           }
         }
       }
     },
+
     "/exercises": {
       "get": {
         "tags": ["Exercises"],
@@ -372,10 +623,10 @@
         }
       }
     },
-    "/exercises/bodyparts": {
+    "/exercises/filters": {
       "get": {
         "tags": ["Exercises"],
-        "summary": "Get all body parts",
+        "summary": "Get all filtered exercises",
         "parameters": [],
         "security": [{ "Bearer": [] }],
         "requestBody": {},
@@ -403,20 +654,32 @@
         }
       }
     },
-    "/exercises/muscules": {
+
+    "diary/{date}": {
       "get": {
-        "tags": ["Exercises"],
-        "summary": "Get all muscules",
-        "parameters": [],
-        "security": [{ "Bearer": [] }],
-        "requestBody": {},
+        "tags": ["Diary"],
+        "summary": "Get diary by user and date",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "date",
+            "required": true,
+            "type": "string",
+            "example": "27/10/2023",
+            "description": "Date for which to get diary"
+          }
+        ],
         "responses": {
           "200": {
-            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ExercisesMusclesResponse"
+                  "$ref": "#/components/schemas/DiaryResponse"
                 }
               }
             }
@@ -430,30 +693,10 @@
                 }
               }
             }
-          }
-        }
-      }
-    },
-    "/exercises/equipments": {
-      "get": {
-        "tags": ["Exercises"],
-        "summary": "Get all equipments",
-        "parameters": [],
-        "security": [{ "Bearer": [] }],
-        "requestBody": {},
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ExercisesEquipmentsResponse"
-                }
-              }
-            }
           },
-          "404": {
-            "description": "Not Found",
+
+          "400": {
+            "description": "Bad request",
             "content": {
               "application/json": {
                 "schema": {
@@ -465,6 +708,7 @@
         }
       }
     },
+
     "diary/products": {
       "post": {
         "tags": ["Diary"],
@@ -495,46 +739,23 @@
           },
           "400": {
             "description": "Bad request",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
           },
           "500": {
             "description": "Server error",
-            "content": {}
-          }
-        }
-      }
-    },
-    "diary/products/{id}": {
-      "delete": {
-        "tags": ["Diary"],
-        "summary": "Delete user diary products",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "type": "string",
-            "description": "Diary product ID",
-            "example": "5d51694902b2373622ff5773"
-          }
-        ],
-        "security": [{ "Bearer": [] }],
-        "responses": {
-          "201": {
-            "description": "Product deleted from diary successfully",
-            "content": {}
-          },
-          "400": {
-            "description": "Bad request",
-            "content": {}
-          },
-          "404": {
-            "description": "Product not found in diary",
-            "content": {}
-          },
-          "500": {
-            "description": "Server error",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -569,11 +790,76 @@
           },
           "400": {
             "description": "Bad request",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
           },
           "500": {
             "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "diary/products/{id}": {
+      "delete": {
+        "tags": ["Diary"],
+        "summary": "Delete user diary products",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "Diary product ID",
+            "example": "5d51694902b2373622ff5773"
+          }
+        ],
+        "security": [{ "Bearer": [] }],
+        "responses": {
+          "201": {
+            "description": "Product deleted from diary successfully",
             "content": {}
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Product not found in diary",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -590,7 +876,7 @@
             "required": true,
             "type": "string",
             "description": "Diary exercise ID",
-            "example": "64f2458d6f67bc34bae4f813"
+            "example": "64f2458d6f67bc34bae4f801"
           }
         ],
         "security": [{ "Bearer": [] }],
@@ -601,52 +887,39 @@
           },
           "400": {
             "description": "Bad request",
-            "content": {}
-          },
-          "404": {
-            "description": "Exercise not found in diary",
-            "content": {}
-          },
-          "500": {
-            "description": "Server error",
-            "content": {}
-          }
-        }
-      }
-    },
-    "diary/{date}": {
-      "get": {
-        "tags": ["Diary"],
-        "summary": "Get diary by date",
-        "parameters": [],
-        "security": [{ "Bearer": [] }],
-        "responses": {
-          "201": {
-            "description": "Successful",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DiaryResponse"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
           },
-          "401": {
-            "description": "Unauthorized",
-            "content": {}
-          },
           "404": {
-            "description": "Not found",
-            "content": {}
+            "description": "Exercise not found in diary",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
           },
           "500": {
             "description": "Server error",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
           }
         }
       }
     }
   },
+
   "components": {
     "schemas": {
       "RegistrationRequest": {
@@ -655,13 +928,12 @@
         "properties": {
           "name": {
             "type": "string",
-            "description": "User's name",
-            "example": "Power Pulse"
+            "description": "User's name"
           },
           "email": {
             "type": "string",
             "description": "User's email",
-            "example": "powerpulse@goit.com"
+            "format": "email"
           },
           "password": {
             "type": "string",
@@ -678,68 +950,17 @@
             "properties": {
               "name": {
                 "type": "string",
-                "description": "User's name",
-                "example": "Power Pulse"
+                "description": "User's name"
               },
               "email": {
                 "type": "string",
-                "description": "User's email",
-                "example": "powerpulse@goit.com"
-              },
-              "blood": {
-                "type": "number",
-                "description": "User's blood type",
-                "enum": ["1", "2", "3", "4"],
-                "example": 1
-              },
-              "sex": {
-                "type": "string",
-                "description": "User's gender",
-                "enum": ["male", "female"],
-                "example": "male"
-              },
-              "height": {
-                "type": "number",
-                "description": "User's height",
-                "example": 0
-              },
-              "currentWeight": {
-                "type": "number",
-                "description": "User's current weight",
-                "example": 0
-              },
-              "desiredWeight": {
-                "type": "number",
-                "description": "User's desired weight",
-                "example": 0
-              },
-              "levelActivity": {
-                "type": "number",
-                "description": "User's level activity",
-                "enum": ["1", "2", "3", "4", "5"],
-                "example": 1
-              },
-              "avatarURL": {
-                "type": "string",
-                "description": "User's avatar URL",
-                "example": "//www.gravatar.com/avatar/2539b2169b228256128de51b7960d32c"
-              },
-              "birthday": {
-                "type": "string",
-                "description": "User's birthday (mm/dd/yyyy)",
-                "example": "01/20/2001"
-              },
-              "createdAt": {
-                "type": "string",
-                "description": "User's create date",
-                "example": "2024-01-22T18:43:55.351Z"
+                "description": "User's email"
               }
             }
           },
           "token": {
             "type": "string",
-            "description": "JWT token for authentication",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1YWFmYWRhMmU1MjJiMzhhNWYwNTAyNyIsImlhdCI6MTcwNTcxNDE5NCwiZXhwIjoxNzA4MzA2MTk0fQ.8zpaoGrvQtustURtEStObpcAzaW_T9EH0HfEVpc_ql8"
+            "description": "JWT token for authentication"
           }
         }
       },
@@ -750,7 +971,7 @@
           "email": {
             "type": "string",
             "description": "User's email",
-            "example": "powerpulse@goit.com"
+            "format": "email"
           },
           "password": {
             "type": "string",
@@ -767,8 +988,30 @@
             "properties": {
               "name": {
                 "type": "string",
-                "description": "User's name",
-                "example": "Power Pulse"
+                "description": "User's name"
+              },
+              "email": {
+                "type": "string",
+                "description": "User's email"
+              }
+            }
+          },
+          "token": {
+            "type": "string",
+            "description": "JWT token for authentication"
+          }
+        }
+      },
+
+      "CurrentResponse": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "User's name"
               },
               "email": {
                 "type": "string",
@@ -825,78 +1068,7 @@
           }
         }
       },
-      "CurrentResponse": {
-        "type": "object",
-        "properties": {
-          "user": {
-            "type": "object",
-            "properties": {
-              "name": {
-                "type": "string",
-                "description": "User's name"
-              },
-              "email": {
-                "type": "string",
-                "description": "User's email"
-              },
-              "blood": {
-                "type": "number",
-                "description": "User's blood type",
-                "enum": ["1", "2", "3", "4"],
-                "example": 1
-              },
-              "sex": {
-                "type": "string",
-                "description": "User's gender",
-                "enum": ["male", "female"],
-                "example": "male"
-              },
-              "height": {
-                "type": "number",
-                "description": "User's height",
-                "example": 0
-              },
-              "currentWeight": {
-                "type": "number",
-                "description": "User's current weight",
-                "example": 0
-              },
-              "desiredWeight": {
-                "type": "number",
-                "description": "User's desired weight",
-                "example": 0
-              },
-              "levelActivity": {
-                "type": "number",
-                "description": "User's level activity",
-                "enum": ["1", "2", "3", "4", "5"],
-                "example": 1
-              },
-              "avatarURL": {
-                "type": "string",
-                "description": "User's avatar URL"
-              },
-              "birthday": {
-                "type": "string",
-                "description": "User's birthday (mm/dd/yyyy)"
-              },
-              "createdAt": {
-                "type": "string",
-                "description": "User's create date"
-              }
-            }
-          },
-          "bmr": {
-            "type": "number",
-            "description": "User's bmr",
-            "example": 2141
-          },
-          "token": {
-            "type": "string",
-            "description": "JWT token for authentication"
-          }
-        }
-      },
+
       "ParamsRequest": {
         "type": "object",
         "required": [
@@ -913,54 +1085,46 @@
         "properties": {
           "name": {
             "type": "string",
-            "description": "User's name",
-            "example": "Power Pulse"
+            "description": "User's name"
           },
           "email": {
             "type": "string",
-            "description": "User's email",
-            "example": "powerpulse@goit.com"
+            "description": "User's email"
           },
           "blood": {
             "type": "number",
             "description": "User's blood type",
-            "enum": ["1", "2", "3", "4"],
-            "example": 1
+            "enum": ["1", "2", "3", "4"]
           },
           "sex": {
             "type": "string",
             "description": "User's gender",
-            "enum": ["male", "female"],
-            "example": "male"
+            "enum": ["male", "female"]
           },
           "height": {
             "type": "number",
-            "description": "User's height minimum 150(cm)",
-            "example": 150
+            "description": "User's height minimum 150(cm)"
           },
           "currentWeight": {
             "type": "number",
-            "description": "User's current weight minimum 35(kg)",
-            "example": 35
+            "description": "User's current weight minimum 35(kg)"
           },
           "desiredWeight": {
             "type": "number",
-            "description": "User's desired weight minimum 35(kg)",
-            "example": 35
+            "description": "User's desired weight minimum 35(kg)"
           },
           "levelActivity": {
             "type": "number",
             "description": "User's level activity",
-            "enum": ["1", "2", "3", "4", "5"],
-            "example": 1
+            "enum": ["1", "2", "3", "4", "5"]
           },
           "birthday": {
             "type": "string",
-            "description": "Must be older than 18 years",
-            "example": "01/20/2001 (mm/dd/yyyy)"
+            "description": "Must be older than 18 years"
           }
         }
       },
+
       "ParamsResponse": {
         "type": "object",
         "properties": {
@@ -969,51 +1133,42 @@
             "properties": {
               "name": {
                 "type": "string",
-                "description": "User's name",
-                "example": "Power Pulse"
+                "description": "User's name"
               },
               "email": {
                 "type": "string",
-                "description": "User's email",
-                "example": "powerpulse@goit.com"
+                "description": "User's email"
               },
               "blood": {
                 "type": "number",
                 "description": "User's blood type",
-                "enum": ["1", "2", "3", "4"],
-                "example": 1
+                "enum": ["1", "2", "3", "4"]
               },
               "sex": {
                 "type": "string",
                 "description": "User's gender",
-                "enum": ["male", "female"],
-                "example": "male"
+                "enum": ["male", "female"]
               },
               "height": {
                 "type": "number",
-                "description": "User's height minimum 150(cm)",
-                "example": 175
+                "description": "User's height minimum 150(cm)"
               },
               "currentWeight": {
                 "type": "number",
-                "description": "User's current weight minimum 35(kg)",
-                "example": 85
+                "description": "User's current weight minimum 35(kg)"
               },
               "desiredWeight": {
                 "type": "number",
-                "description": "User's desired weight minimum 35(kg)",
-                "example": 80
+                "description": "User's desired weight minimum 35(kg)"
               },
               "levelActivity": {
                 "type": "number",
                 "description": "User's level activity",
-                "enum": ["1", "2", "3", "4", "5"],
-                "example": 1
+                "enum": ["1", "2", "3", "4", "5"]
               },
               "birthday": {
                 "type": "string",
-                "description": "Must be older than 18 years (mm/dd/yyyy)",
-                "example": "01/20/2001"
+                "description": "Must be older than 18 years (mm/dd/yyyy)"
               },
               "avatarURL": {
                 "type": "string",
@@ -1028,6 +1183,7 @@
           }
         }
       },
+
       "AvatarRequest": {
         "type": "object",
         "properties": {
@@ -1052,6 +1208,7 @@
           }
         }
       },
+
       "CategoriesResponse": {
         "type": "object",
         "properties": {
@@ -1083,14 +1240,52 @@
           "vegetables and herbs"
         ]
       },
+      "ProductsResponse": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "string",
+              "description": "Products id"
+            },
+            "weight": {
+              "type": "integer",
+              "description": "Product weight, grams"
+            },
+            "calories": {
+              "type": "integer",
+              "description": "Calorie content of 100 grams of product"
+            },
+            "category": {
+              "type": "string",
+              "description": "Product category"
+            },
+            "title": {
+              "type": "string",
+              "description": "Product name"
+            },
+            "groupBloodNotAllowed": {
+              "type": "object",
+              "description": "Recommend products by blood type"
+            }
+          }
+        }
+      },
+
       "ProductsFilterResponse": {
         "type": "object",
         "properties": {
-          "numberProductsRecommended": {
+          "recommendedProducts": {
             "type": "integer",
-            "description": "Total number of items",
-            "example": 1
+            "description": "List of recommended products"
           },
+
+          "notRecommendedProducts": {
+            "type": "integer",
+            "description": "List of not recommended products"
+          },
+
           "dataUser": {
             "type": "array",
             "items": {
@@ -1098,44 +1293,34 @@
               "properties": {
                 "_id": {
                   "type": "string",
-                  "description": "product id",
-                  "example": "5d51694902b2373622ff5c95"
+                  "description": "product id"
                 },
                 "weight": {
                   "type": "number",
-                  "description": "product weight",
-                  "example": 100
+                  "description": "product weight"
                 },
                 "calories": {
                   "type": "number",
-                  "description": "product calories",
-                  "example": 213
+                  "description": "product calories"
                 },
                 "category": {
                   "type": "string",
-                  "description": "product category",
-                  "example": "nuts"
+                  "description": "product category"
                 },
                 "title": {
                   "type": "string",
-                  "description": "product title",
-                  "example": "Canned chestnut"
+                  "description": "product title"
                 },
                 "groupBloodNotAllowed": {
                   "type": "object",
-                  "description": "Blood group",
-                  "example": {
-                    "1": false,
-                    "2": false,
-                    "3": false,
-                    "4": true
-                  }
+                  "description": "Blood group"
                 }
               }
             }
           }
         }
       },
+
       "ExercisesResponse": {
         "type": "array",
         "items": {
@@ -1143,102 +1328,46 @@
           "properties": {
             "_id": {
               "type": "string",
-              "description": "product id",
-              "example": "650f35ece3f5522fc6396289"
+              "description": "product id"
             },
             "filter": {
               "type": "string",
-              "description": "Exercises type",
-              "example": "Body parts"
+              "description": "Exercises type"
             },
             "name": {
               "type": "string",
-              "description": "Exercises name",
-              "example": "back"
+              "description": "Exercises name"
             },
             "imgURL": {
               "type": "string",
-              "description": "Exercises image",
-              "example": "https://ftp.goit.study/img/power-pulse/filters/back_wzzphw.jpg"
+              "description": "Exercises image"
             }
           }
         }
       },
-      "ExercisesBodyPartResponse": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "properties": {
-            "_id": {
-              "type": "string",
-              "description": "product id",
-              "example": "64f2458d6f67bc34bae4fa5b"
-            },
-            "bodyPart": {
-              "type": "string",
-              "description": "Body part type",
-              "example": "waist"
-            },
-            "equipment": {
-              "type": "string",
-              "description": "Equipment name",
-              "example": "dumbbell"
-            },
-            "gifUrl": {
-              "type": "string",
-              "description": "Exercises gif",
-              "example": "https://ftp.goit.study/img/power-pulse/gifs/0777.gif"
-            },
-            "name": {
-              "type": "string",
-              "description": "Name",
-              "example": "spell caster"
-            },
-            "target": {
-              "type": "string",
-              "description": "Target name",
-              "example": "abs"
-            },
-            "burnedCalories": {
-              "type": "number",
-              "description": "Burned calories",
-              "example": 192
-            },
-            "time": {
-              "type": "number",
-              "description": "Exercise time",
-              "example": 3
-            }
-          }
-        }
-      },
+
       "DiaryResponse": {
         "type": "object",
         "properties": {
           "caloriesIntake": {
             "type": "number",
-            "description": "dairy calories intake",
-            "example": 2786
+            "description": "dairy calories"
           },
           "consumedCalories": {
             "type": "number",
-            "description": "dairy calories consumed",
-            "example": 48
+            "description": "dairy calories consumed"
           },
           "burnedCalories": {
             "type": "number",
-            "description": "dairy calories burned",
-            "example": 264
+            "description": "dairy calories burned"
           },
           "remainingCalories": {
             "type": "number",
-            "description": "dairy calories remaining",
-            "example": 2738
+            "description": "dairy calories remaining"
           },
           "remainingSports": {
             "type": "number",
-            "description": "dairy sports remaining",
-            "example": 107
+            "description": "dairy sports remaining"
           },
           "addProducts": {
             "type": "array",
@@ -1251,48 +1380,39 @@
                   "properties": {
                     "_id": {
                       "type": "string",
-                      "description": "product id",
-                      "example": "5d51694902b2373622ff5773"
+                      "description": "product id"
                     },
                     "weight": {
                       "type": "number",
-                      "description": "weight",
-                      "example": 100
+                      "description": "weight"
                     },
                     "calories": {
                       "type": "number",
-                      "description": "calories",
-                      "example": 340
+                      "description": "calories"
                     },
                     "category": {
                       "type": "string",
-                      "description": "category",
-                      "example": "dairy"
+                      "description": "category"
                     },
                     "title": {
                       "type": "string",
-                      "description": "title",
-                      "example": "Danbo cheese"
+                      "description": "title"
                     },
                     "groupBloodNotAllowed": {
                       "type": "object",
                       "description": "group of blood",
                       "properties": {
                         "1": {
-                          "type": "boolean",
-                          "example": true
+                          "type": "boolean"
                         },
                         "2": {
-                          "type": "boolean",
-                          "example": true
+                          "type": "boolean"
                         },
                         "3": {
-                          "type": "boolean",
-                          "example": false
+                          "type": "boolean"
                         },
                         "4": {
-                          "type": "boolean",
-                          "example": false
+                          "type": "boolean"
                         }
                       }
                     }
@@ -1300,23 +1420,19 @@
                 },
                 "date": {
                   "type": "string",
-                  "description": "dairy product date",
-                  "example": "13-01-2024"
+                  "description": "dairy product date"
                 },
                 "amount": {
                   "type": "number",
-                  "description": "amount of product",
-                  "example": 100
+                  "description": "amount of product"
                 },
                 "calories": {
                   "type": "number",
-                  "description": "calories amount",
-                  "example": 150
+                  "description": "calories amount"
                 },
                 "_id": {
                   "type": "string",
-                  "description": "diary product id",
-                  "example": "65ae8a6ff2903af360c6dff5"
+                  "description": "diary product id"
                 }
               }
             }
@@ -1332,65 +1448,53 @@
                   "properties": {
                     "_id": {
                       "type": "string",
-                      "description": "exercise id",
-                      "example": "64f2458d6f67bc34bae4f7f7"
+                      "description": "exercise id"
                     },
                     "bodyPart": {
                       "type": "string",
-                      "description": "body part",
-                      "example": "chest"
+                      "description": "body part"
                     },
                     "equipment": {
                       "type": "string",
-                      "description": "equipment",
-                      "example": "leverage machine"
+                      "description": "equipment"
                     },
                     "gifUrl": {
                       "type": "string",
-                      "description": "gif url",
-                      "example": "https://ftp.goit.study/img/power-pulse/gifs/0009.gif"
+                      "description": "gif url"
                     },
                     "name": {
                       "type": "string",
-                      "description": "exercise name",
-                      "example": "assisted chest dip (kneeling)"
+                      "description": "exercise name"
                     },
                     "target": {
                       "type": "string",
-                      "description": "target",
-                      "example": "pectorals"
+                      "description": "target"
                     },
                     "burnedCalories": {
                       "type": "number",
-                      "description": "burned calories",
-                      "example": 329
+                      "description": "burned calories"
                     },
                     "time": {
                       "type": "number",
-                      "description": "time for exercise",
-                      "example": 3
+                      "description": "time for exercise"
                     }
                   }
                 },
                 "date": {
                   "type": "string",
-                  "description": "dairy exercise date",
-                  "example": "13-01-2024"
+                  "description": "dairy exercise date"
                 },
                 "time": {
                   "type": "number",
-                  "description": "time for exercise",
-                  "example": 3
+                  "description": "time for exercise"
                 },
                 "calories": {
                   "type": "number",
-                  "description": "calories amount",
-                  "example": 329
+                  "description": "calories amount"
                 },
                 "_id": {
                   "type": "string",
-                  "description": "diary exercise id",
-                  "example": "65ae8a6ff2903af360c6dff5"
+                  "description": "diary exercise id"
                 }
               }
             }
@@ -1403,25 +1507,21 @@
         "properties": {
           "productId": {
             "type": "string",
-            "description": "Product Id",
-            "example": "64f2458d6f67bc34bae4f7f7"
+            "description": "Product Id"
           },
           "date": {
             "type": "string",
             "validate": ["The format of date: dd-MM-yyyy"],
-            "description": "Date the product was eaten",
-            "example": "22-01-2024"
+            "description": "Date the product was eaten"
           },
           "amount": {
             "type": "number",
-            "description": "Amount of products",
-            "example": 150
+            "description": "Amount of products"
           },
           "calories": {
             "type": "number",
             "min": [1, "The calories cannot be less than 1 minute"],
-            "description": "Burned calories",
-            "example": 150
+            "description": "Burned calories"
           }
         }
       },
@@ -1437,18 +1537,15 @@
             "properties": {
               "_id": {
                 "type": "string",
-                "description": "diary id",
-                "example": "65ae8a6f5d81f9d9e95ec829"
+                "description": "diary id"
               },
               "date": {
                 "type": "string",
-                "description": "dairy date",
-                "example": "13-01-2024"
+                "description": "dairy date"
               },
               "owner": {
                 "type": "string",
-                "description": "owner user's id",
-                "example": "65aafada2e522b38a5f05027"
+                "description": "owner user's id"
               },
               "addProducts": {
                 "type": "array",
@@ -1461,48 +1558,39 @@
                       "properties": {
                         "_id": {
                           "type": "string",
-                          "description": "product id",
-                          "example": "5d51694902b2373622ff5773"
+                          "description": "product id"
                         },
                         "weight": {
                           "type": "number",
-                          "description": "weight",
-                          "example": 100
+                          "description": "weight"
                         },
                         "calories": {
                           "type": "number",
-                          "description": "calories",
-                          "example": 340
+                          "description": "calories"
                         },
                         "category": {
                           "type": "string",
-                          "description": "category",
-                          "example": "dairy"
+                          "description": "category"
                         },
                         "title": {
                           "type": "string",
-                          "description": "title",
-                          "example": "Danbo cheese"
+                          "description": "title"
                         },
                         "groupBloodNotAllowed": {
                           "type": "object",
                           "description": "group of blood",
                           "properties": {
                             "1": {
-                              "type": "boolean",
-                              "example": true
+                              "type": "boolean"
                             },
                             "2": {
-                              "type": "boolean",
-                              "example": true
+                              "type": "boolean"
                             },
                             "3": {
-                              "type": "boolean",
-                              "example": false
+                              "type": "boolean"
                             },
                             "4": {
-                              "type": "boolean",
-                              "example": false
+                              "type": "boolean"
                             }
                           }
                         }
@@ -1510,23 +1598,19 @@
                     },
                     "date": {
                       "type": "string",
-                      "description": "dairy product date",
-                      "example": "13-01-2024"
+                      "description": "dairy product date"
                     },
                     "amount": {
                       "type": "number",
-                      "description": "amount of product",
-                      "example": 100
+                      "description": "amount of product"
                     },
                     "calories": {
                       "type": "number",
-                      "description": "calories amount",
-                      "example": 150
+                      "description": "calories amount"
                     },
                     "_id": {
                       "type": "string",
-                      "description": "diary product id",
-                      "example": "65ae8a6ff2903af360c6dff5"
+                      "description": "diary product id"
                     }
                   }
                 }
@@ -1541,59 +1625,53 @@
           }
         }
       },
+
       "DiaryExercisesRequest": {
         "type": "object",
         "required": ["exerciseId", "date", "time", "calories"],
         "properties": {
           "exerciseId": {
             "type": "string",
-            "description": "Exercise Id",
-            "example": "64f2458d6f67bc34bae4f7f4"
+            "description": "Exercise Id"
           },
           "date": {
             "type": "string",
             "validate": ["The format of date: dd-MM-yyyy"],
-            "description": "Date of performing the exercise",
-            "example": "13-01-2024"
+            "description": "Date of performing the exercise"
           },
           "time": {
             "type": "number",
             "min": [1, "The time cannot be less than 1 minute"],
-            "description": "Time for exercise",
-            "example": 13
+            "description": "Time for exercise"
           },
           "calories": {
             "type": "number",
             "min": [1, "The calories cannot be less than 1 minute"],
-            "description": "Burned calories",
-            "example": 123
+            "description": "Burned calories"
           }
         }
       },
+
       "DiaryExercisesResponse": {
         "type": "object",
         "properties": {
           "message": {
-            "type": "string",
-            "example": "Exercise added to diary successfully"
+            "type": "string"
           },
           "data": {
             "type": "object",
             "properties": {
               "_id": {
                 "type": "string",
-                "description": "diary id",
-                "example": "65ae8a6f5d81f9d9e95ec829"
+                "description": "diary id"
               },
               "date": {
                 "type": "string",
-                "description": "dairy  date",
-                "example": "13-01-2024"
+                "description": "dairy  date"
               },
               "owner": {
                 "type": "string",
-                "description": "owner user's id",
-                "example": "65aafada2e522b38a5f05027"
+                "description": "owner user's id"
               },
               "addExercises": {
                 "type": "array",
@@ -1606,65 +1684,53 @@
                       "properties": {
                         "_id": {
                           "type": "string",
-                          "description": "exercise id",
-                          "example": "64f2458d6f67bc34bae4f7f7"
+                          "description": "exercise id"
                         },
                         "bodyPart": {
                           "type": "string",
-                          "description": "body part",
-                          "example": "chest"
+                          "description": "body part"
                         },
                         "equipment": {
                           "type": "string",
-                          "description": "equipment",
-                          "example": "leverage machine"
+                          "description": "equipment"
                         },
                         "gifUrl": {
                           "type": "string",
-                          "description": "gif url",
-                          "example": "https://ftp.goit.study/img/power-pulse/gifs/0009.gif"
+                          "description": "gif url"
                         },
                         "name": {
                           "type": "string",
-                          "description": "exercise name",
-                          "example": "assisted chest dip (kneeling)"
+                          "description": "exercise name"
                         },
                         "target": {
                           "type": "string",
-                          "description": "target",
-                          "example": "pectorals"
+                          "description": "target"
                         },
                         "burnedCalories": {
                           "type": "number",
-                          "description": "burned calories",
-                          "example": 329
+                          "description": "burned calories"
                         },
                         "time": {
                           "type": "number",
-                          "description": "time for exercise",
-                          "example": 3
+                          "description": "time for exercise"
                         }
                       }
                     },
                     "date": {
                       "type": "string",
-                      "description": "dairy exercise date",
-                      "example": "13-01-2024"
+                      "description": "dairy exercise date"
                     },
                     "time": {
                       "type": "number",
-                      "description": "time for exercise",
-                      "example": 3
+                      "description": "time for exercise"
                     },
                     "calories": {
                       "type": "number",
-                      "description": "calories amount",
-                      "example": 329
+                      "description": "calories amount"
                     },
                     "_id": {
                       "type": "string",
-                      "description": "diary exercise id",
-                      "example": "65ae8a6ff2903af360c6dff5"
+                      "description": "diary exercise id"
                     }
                   }
                 }
@@ -1676,15 +1742,25 @@
                 }
               }
             }
-          },
-          "securitySchemes": {
-            "Bearer": {
-              "type": "http",
-              "scheme": "bearer",
-              "bearerFormat": "JWT"
-            }
           }
         }
+      },
+
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "descroption": "Message"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
       }
     }
   }
