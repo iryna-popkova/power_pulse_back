@@ -69,3 +69,39 @@ const filteredProducts = async (req, res) => {
 };
 
 module.exports = filteredProducts;
+
+// const filteredProducts = async (req, res) => {
+//   try {
+//     const userBloodType = req.user.blood;
+//     const keyWord = req.query.keyword;
+
+//     const recommendedProducts = await Products.find({
+//       $and: [
+//         { name: { $regex: keyWord, $options: "i" } },
+//         {
+//           $or: [
+//             { [`groupBloodNotAllowed.${userBloodType}`]: { $exists: false } },
+//             { [`groupBloodNotAllowed.${userBloodType}`]: false },
+//           ],
+//         },
+//       ],
+//     });
+
+//     const notRecommendedProducts = await Products.find({
+//       $and: [
+//         { name: { $regex: keyWord, $options: "i" } },
+//         { [`groupBloodNotAllowed.${userBloodType}`]: true },
+//       ],
+//     });
+
+//     res.status(200).json({
+//       recommendedProducts,
+//       notRecommendedProducts,
+//     });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: "Internal Server Error" });
+//   }
+// };
+
+// module.exports = filteredProducts;
