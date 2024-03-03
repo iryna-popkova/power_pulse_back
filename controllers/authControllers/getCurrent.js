@@ -8,6 +8,8 @@ const getCurrent = async (req, res) => {
       throw HttpError(404, "User not found");
     }
 
+    user.dailyRateSports = 110;
+
     res.status(200).json({
       user: {
         name: user.name,
