@@ -822,7 +822,7 @@
         "security": [{ "Bearer": [] }],
         "responses": {
           "201": {
-            "description": "Exercise deleted from diary",
+            "description": "Exercise deleted from diary successfully",
             "content": {}
           },
           "400": {
@@ -1242,31 +1242,6 @@
           "properties": {
             "_id": {
               "type": "string",
-              "description": "exercise id"
-            },
-            "filter": {
-              "type": "string",
-              "description": "Exercises type"
-            },
-            "name": {
-              "type": "string",
-              "description": "Exercises name"
-            },
-            "imgURL": {
-              "type": "string",
-              "description": "Exercises image"
-            }
-          }
-        }
-      },
-
-      "ExercisesFiltersResponse": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "properties": {
-            "_id": {
-              "type": "string",
               "description": "product id"
             },
             "bodyPart": {
@@ -1296,6 +1271,33 @@
             "time": {
               "type": "number",
               "description": "Exercise time"
+            }
+          }
+        }
+      },
+
+      "ExercisesFiltersResponse": {
+        "type": "object",
+        "properties": {
+          "bodyParts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "_id": { "type": "string", "description": "exercise id" },
+                "filter": {
+                  "type": "string",
+                  "description": "Exercises type"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Exercises name"
+                },
+                "imgURL": {
+                  "type": "string",
+                  "description": "Exercises image"
+                }
+              }
             }
           }
         }
