@@ -9,8 +9,6 @@
       "url": "https://github.com/iryna-popkova/power_pulse_back"
     }
   },
-  "consumes": ["application/json"],
-  "produces": ["application/json"],
   "servers": [
     { "url": "https://power-pulse-back.onrender.com" },
     {
@@ -144,7 +142,6 @@
         "summary": "Get current user",
         "parameters": [],
         "security": [{ "Bearer": [] }],
-        "requestBody": {},
         "responses": {
           "200": {
             "description": "Successful",
@@ -175,14 +172,14 @@
                 }
               }
             }
-          }
-        },
-        "401": {
-          "description": "Unauthorized",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ErrorResponse"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
               }
             }
           }
@@ -545,7 +542,6 @@
         "summary": "Get all exercises",
         "parameters": [],
         "security": [{ "Bearer": [] }],
-        "requestBody": {},
         "responses": {
           "200": {
             "description": "Successful",
@@ -576,7 +572,6 @@
         "summary": "Get all filtered exercises",
         "parameters": [],
         "security": [{ "Bearer": [] }],
-        "requestBody": {},
         "responses": {
           "200": {
             "description": "Successful",
@@ -613,15 +608,18 @@
         ],
         "parameters": [
           {
-            "in": "query",
+            "in": "path",
             "name": "date",
             "required": true,
-            "type": "string",
-            "description": "Date for which to get diary"
+            "description": "Date for which to get diary",
+            "schema": {
+              "$ref": "#/components/schemas/DiaryResponse"
+            }
           }
         ],
         "responses": {
           "200": {
+            "description": "Successful",
             "content": {
               "application/json": {
                 "schema": {
@@ -766,8 +764,10 @@
             "in": "path",
             "name": "id",
             "required": true,
-            "type": "string",
-            "description": "Diary product ID"
+            "description": "Diary product ID",
+            "schema": {
+              "$ref": "#/components/schemas/DiaryProductRequest"
+            }
           }
         ],
         "security": [{ "Bearer": [] }],
@@ -795,14 +795,14 @@
                 }
               }
             }
-          }
-        },
-        "500": {
-          "description": "Server error",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ErrorResponse"
+          },
+          "500": {
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
               }
             }
           }
@@ -819,8 +819,10 @@
             "in": "path",
             "name": "id",
             "required": true,
-            "type": "string",
-            "description": "Diary exercise ID"
+            "description": "Diary exercise ID",
+            "schema": {
+              "$ref": "#/components/schemas/DiaryExercisesRequest"
+            }
           }
         ],
         "security": [{ "Bearer": [] }],
@@ -1445,7 +1447,6 @@
           },
           "date": {
             "type": "string",
-            "validate": ["The format of date: dd-MM-yyyy"],
             "description": "Date the product was eaten"
           },
           "amount": {
@@ -1454,7 +1455,6 @@
           },
           "calories": {
             "type": "number",
-            "min": [1, "The calories cannot be less than 1 minute"],
             "description": "Burned calories"
           }
         }
@@ -1569,17 +1569,14 @@
           },
           "date": {
             "type": "string",
-            "validate": ["The format of date: dd-MM-yyyy"],
             "description": "Date of performing the exercise"
           },
           "time": {
             "type": "number",
-            "min": [1, "The time cannot be less than 1 minute"],
             "description": "Time for exercise"
           },
           "calories": {
             "type": "number",
-            "min": [1, "The calories cannot be less than 1 minute"],
             "description": "Burned calories"
           }
         }
@@ -1684,7 +1681,7 @@
         "properties": {
           "message": {
             "type": "string",
-            "descroption": "Message"
+            "description": "Message"
           }
         }
       }
