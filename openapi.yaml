@@ -1,0 +1,1195 @@
+openapi: 3.0.1
+info:
+  version: 2.0.2
+  title: Power Pulse API
+  description: Documentation for Power Pulse API
+  license:
+    name: Power Pulse API by project-group-4
+    url: https://github.com/iryna-popkova/power_pulse_back
+servers:
+  - url: https://power-pulse-back.onrender.com
+  - url: http://localhost:3000
+tags:
+  - name: Auth
+    description: Authorization endpoints
+  - name: Products
+    description: Products endpoints
+  - name: Exercises
+    description: Exercises endpoints
+  - name: Diary
+    description: Diary endpoints
+paths:
+  /users/register:
+    post:
+      tags:
+        - Auth
+      summary: User registration
+      parameters: []
+      requestBody:
+        description: Registration's object
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegistrationRequest'
+      responses:
+        '201':
+          description: Successful registration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegistrationResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: Email already in use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /users/login:
+    post:
+      tags:
+        - Auth
+      summary: User login
+      parameters: []
+      requestBody:
+        description: Login person
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Email or password invalid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /users/current:
+    get:
+      tags:
+        - Auth
+      summary: Get current user
+      parameters: []
+      security:
+        - Bearer: []
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CurrentResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /users/params:
+    patch:
+      tags:
+        - Auth
+      summary: Update user information
+      parameters: []
+      security:
+        - Bearer: []
+      requestBody:
+        description: Update user information
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ParamsRequest'
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ParamsResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /users/avatars:
+    patch:
+      tags:
+        - Auth
+      summary: Update user avatar
+      parameters: []
+      security:
+        - Bearer: []
+      requestBody:
+        description: Upload new avatar
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AvatarRequest'
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AvatarResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /users/logout:
+    post:
+      tags:
+        - Auth
+      summary: User logout
+      parameters: []
+      security:
+        - Bearer: []
+      responses:
+        '204':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Logout from account
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /products/categories:
+    get:
+      tags:
+        - Products
+      summary: Get list of all categories of products
+      parameters: []
+      security:
+        - Bearer: []
+      responses:
+        '201':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoriesResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /products:
+    get:
+      tags:
+        - Products
+      summary: Get list of all products in database
+      parameters: []
+      security:
+        - Bearer: []
+      responses:
+        '201':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductsResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /products/filter:
+    get:
+      tags:
+        - Products
+      summary: Get list of filtered products
+      parameters: []
+      security:
+        - Bearer: []
+      responses:
+        '201':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductsFilterResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /exercises:
+    get:
+      tags:
+        - Exercises
+      summary: Get all exercises
+      parameters: []
+      security:
+        - Bearer: []
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExercisesResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /exercises/filters:
+    get:
+      tags:
+        - Exercises
+      summary: Get all filtered exercises
+      parameters: []
+      security:
+        - Bearer: []
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExercisesFiltersResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /diary/{date}:
+    get:
+      tags:
+        - Diary
+      summary: Get diary by user and date
+      security:
+        - Bearer: []
+      parameters:
+        - in: path
+          name: date
+          required: true
+          description: Date for which to get diary
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiaryResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /diary/products:
+    post:
+      tags:
+        - Diary
+      summary: User diary products
+      parameters: []
+      security:
+        - Bearer: []
+      requestBody:
+        description: Diary object
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DiaryProductRequest'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiaryProductResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /diary/exercises:
+    post:
+      tags:
+        - Diary
+      summary: User diary exercises
+      parameters: []
+      security:
+        - Bearer: []
+      requestBody:
+        description: Diary object
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DiaryExercisesRequest'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiaryExercisesResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /diary/products/{id}:
+    delete:
+      tags:
+        - Diary
+      summary: Delete user diary products
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: Diary product ID
+          schema:
+            type: string
+      security:
+        - Bearer: []
+      responses:
+        '201':
+          description: Product deleted from diary successfully
+          content: {}
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Product not found in diary
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /diary/exercises/{id}:
+    delete:
+      tags:
+        - Diary
+      summary: Delete user diary exercises
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: Diary exercise ID
+          schema:
+            type: string
+      security:
+        - Bearer: []
+      responses:
+        '201':
+          description: Exercise deleted from diary
+          content: {}
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Exercise not found in diary
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    RegistrationRequest:
+      type: object
+      required:
+        - name
+        - email
+        - password
+      properties:
+        name:
+          type: string
+          description: User's name
+        email:
+          type: string
+          description: User's email
+          format: email
+        password:
+          type: string
+          description: User's password
+          example: qwe123456
+    RegistrationResponse:
+      type: object
+      properties:
+        email:
+          type: string
+          description: User's email
+    LoginRequest:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          description: User's email
+          format: email
+        password:
+          type: string
+          description: User's password
+          example: qwe123456
+    LoginResponse:
+      type: object
+      properties:
+        token:
+          type: string
+          description: JWT token for authentication
+    CurrentResponse:
+      type: object
+      properties:
+        user:
+          type: object
+          properties:
+            name:
+              type: string
+              description: User's name
+            email:
+              type: string
+              description: User's email
+            blood:
+              type: number
+              description: User's blood type
+              enum:
+                - '1'
+                - '2'
+                - '3'
+                - '4'
+            sex:
+              type: string
+              description: User's gender
+              enum:
+                - male
+                - female
+            height:
+              type: number
+              description: User's height
+            currentWeight:
+              type: number
+              description: User's current weight
+            desiredWeight:
+              type: number
+              description: User's desired weight
+            levelActivity:
+              type: number
+              description: User's level activity
+              enum:
+                - '1'
+                - '2'
+                - '3'
+                - '4'
+                - '5'
+            avatarURL:
+              type: string
+              description: User's avatar URL
+            birthday:
+              type: string
+              description: User's birthday (mm/dd/yyyy)
+            createdAt:
+              type: string
+              description: User's create date
+        bmr:
+          type: number
+          description: User's bmr
+        dailyRateSports:
+          type: number
+          description: User's daily rate for sports
+        token:
+          type: string
+          description: JWT token for authentication
+    ParamsRequest:
+      type: object
+      required:
+        - name
+        - blood
+        - sex
+        - height
+        - currentWeight
+        - desiredWeight
+        - levelActivity
+        - birthday
+      properties:
+        name:
+          type: string
+          description: User's name
+        blood:
+          type: number
+          description: User's blood type
+          enum:
+            - '1'
+            - '2'
+            - '3'
+            - '4'
+        sex:
+          type: string
+          description: User's gender
+          enum:
+            - male
+            - female
+        height:
+          type: number
+          description: User's height minimum 150(cm)
+        currentWeight:
+          type: number
+          description: User's current weight minimum 35(kg)
+        desiredWeight:
+          type: number
+          description: User's desired weight minimum 35(kg)
+        levelActivity:
+          type: number
+          description: User's level activity
+          enum:
+            - '1'
+            - '2'
+            - '3'
+            - '4'
+            - '5'
+        birthday:
+          type: string
+          description: Must be older than 18 years
+    ParamsResponse:
+      type: object
+      properties:
+        user:
+          type: object
+          properties:
+            name:
+              type: string
+              description: User's name
+            email:
+              type: string
+              description: User's email
+            blood:
+              type: number
+              description: User's blood type
+              enum:
+                - '1'
+                - '2'
+                - '3'
+                - '4'
+            sex:
+              type: string
+              description: User's gender
+              enum:
+                - male
+                - female
+            height:
+              type: number
+              description: User's height minimum 150(cm)
+            currentWeight:
+              type: number
+              description: User's current weight minimum 35(kg)
+            desiredWeight:
+              type: number
+              description: User's desired weight minimum 35(kg)
+            levelActivity:
+              type: number
+              description: User's level activity
+              enum:
+                - '1'
+                - '2'
+                - '3'
+                - '4'
+                - '5'
+            birthday:
+              type: string
+              description: Must be older than 18 years (mm/dd/yyyy)
+            avatarURL:
+              type: string
+              description: User's avatar URL
+        bmr:
+          type: number
+          description: User's BMR
+        dailyRateSports:
+          type: number
+          description: User's daily rate for sports
+    AvatarRequest:
+      type: object
+      properties:
+        file:
+          type: string
+          format: binary
+          description: User avatar
+    AvatarResponse:
+      type: object
+      properties:
+        avatarURL:
+          type: string
+          description: User's avatar url
+    CategoriesResponse:
+      type: array
+      items:
+        type: string
+        description: The names of product categories
+      example:
+        - berries
+        - cereals
+        - dairy
+    ProductsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          _id:
+            type: string
+            description: Products id
+          weight:
+            type: integer
+            description: Product weight, grams
+          calories:
+            type: integer
+            description: Calorie content of 100 grams of product
+          category:
+            type: string
+            description: Product category
+          title:
+            type: string
+            description: Product name
+          groupBloodNotAllowed:
+            type: object
+            description: Recommend products by blood type
+    ProductsFilterResponse:
+      type: object
+      properties:
+        recommendedProducts:
+          type: integer
+          description: List of recommended products
+        notRecommendedProducts:
+          type: integer
+          description: List of not recommended products
+        dataProduct:
+          type: array
+          items:
+            type: object
+            properties:
+              _id:
+                type: string
+                description: product id
+              weight:
+                type: number
+                description: product weight
+              calories:
+                type: number
+                description: product calories
+              category:
+                type: string
+                description: product category
+              title:
+                type: string
+                description: product title
+              groupBloodNotAllowed:
+                type: object
+                description: Blood group
+    ExercisesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          _id:
+            type: string
+            description: exercise id
+          filter:
+            type: string
+            description: Exercises type
+          name:
+            type: string
+            description: Exercises name
+          imgURL:
+            type: string
+            description: Exercises image
+    ExercisesFiltersResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          _id:
+            type: string
+            description: product id
+          bodyPart:
+            type: string
+            description: Body part type
+          equipment:
+            type: string
+            description: Equipment name
+          gifUrl:
+            type: string
+            description: Exercises gif
+          name:
+            type: string
+            description: Name
+          target:
+            type: string
+            description: Target name
+          burnedCalories:
+            type: number
+            description: Burned calories
+          time:
+            type: number
+            description: Exercise time
+    DiaryResponse:
+      type: object
+      properties:
+        caloriesIntake:
+          type: number
+          description: dairy calories
+        consumedCalories:
+          type: number
+          description: dairy calories consumed
+        burnedCalories:
+          type: number
+          description: dairy calories burned
+        remainingCalories:
+          type: number
+          description: dairy calories remaining
+        remainingSports:
+          type: number
+          description: dairy sports remaining
+        addProducts:
+          type: array
+          items:
+            type: object
+            properties:
+              productId:
+                type: object
+                description: product id
+                properties:
+                  _id:
+                    type: string
+                    description: product id
+                  weight:
+                    type: number
+                    description: weight
+                  calories:
+                    type: number
+                    description: calories
+                  category:
+                    type: string
+                    description: category
+                  title:
+                    type: string
+                    description: title
+                  groupBloodNotAllowed:
+                    type: object
+                    description: group of blood
+                    properties:
+                      '1':
+                        type: boolean
+                      '2':
+                        type: boolean
+                      '3':
+                        type: boolean
+                      '4':
+                        type: boolean
+              date:
+                type: string
+                description: dairy product date
+              amount:
+                type: number
+                description: amount of product
+              calories:
+                type: number
+                description: calories amount
+              _id:
+                type: string
+                description: diary product id
+        addExercises:
+          type: array
+          items:
+            type: object
+            properties:
+              exerciseId:
+                type: object
+                description: exercise id
+                properties:
+                  _id:
+                    type: string
+                    description: exercise id
+                  bodyPart:
+                    type: string
+                    description: body part
+                  equipment:
+                    type: string
+                    description: equipment
+                  gifUrl:
+                    type: string
+                    description: gif url
+                  name:
+                    type: string
+                    description: exercise name
+                  target:
+                    type: string
+                    description: target
+                  burnedCalories:
+                    type: number
+                    description: burned calories
+                  time:
+                    type: number
+                    description: time for exercise
+              date:
+                type: string
+                description: dairy exercise date
+              time:
+                type: number
+                description: time for exercise
+              calories:
+                type: number
+                description: calories amount
+              _id:
+                type: string
+                description: diary exercise id
+    DiaryProductRequest:
+      type: object
+      required:
+        - productId
+        - date
+        - amount
+        - calories
+      properties:
+        productId:
+          type: string
+          description: Product Id
+        date:
+          type: string
+          description: Date the product was eaten
+        amount:
+          type: number
+          description: Amount of products
+        calories:
+          type: number
+          description: Burned calories
+    DiaryProductResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        data:
+          type: object
+          properties:
+            _id:
+              type: string
+              description: diary id
+            date:
+              type: string
+              description: dairy date
+            owner:
+              type: string
+              description: owner user's id
+            addProducts:
+              type: array
+              items:
+                type: object
+                properties:
+                  productId:
+                    type: object
+                    description: product id
+                    properties:
+                      _id:
+                        type: string
+                        description: product id
+                      weight:
+                        type: number
+                        description: weight
+                      calories:
+                        type: number
+                        description: calories
+                      category:
+                        type: string
+                        description: category
+                      title:
+                        type: string
+                        description: title
+                      groupBloodNotAllowed:
+                        type: object
+                        description: group of blood
+                        properties:
+                          '1':
+                            type: boolean
+                          '2':
+                            type: boolean
+                          '3':
+                            type: boolean
+                          '4':
+                            type: boolean
+                  date:
+                    type: string
+                    description: dairy product date
+                  amount:
+                    type: number
+                    description: amount of product
+                  calories:
+                    type: number
+                    description: calories amount
+                  _id:
+                    type: string
+                    description: diary product id
+            addExercises:
+              type: array
+              items:
+                type: object
+    DiaryExercisesRequest:
+      type: object
+      required:
+        - exerciseId
+        - date
+        - time
+        - calories
+      properties:
+        exerciseId:
+          type: string
+          description: Exercise Id
+        date:
+          type: string
+          description: Date of performing the exercise
+        time:
+          type: number
+          description: Time for exercise
+        calories:
+          type: number
+          description: Burned calories
+    DiaryExercisesResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        data:
+          type: object
+          properties:
+            _id:
+              type: string
+              description: diary id
+            date:
+              type: string
+              description: dairy  date
+            owner:
+              type: string
+              description: owner user's id
+            addExercises:
+              type: array
+              items:
+                type: object
+                properties:
+                  exerciseId:
+                    type: object
+                    description: exercise id
+                    properties:
+                      _id:
+                        type: string
+                        description: exercise id
+                      bodyPart:
+                        type: string
+                        description: body part
+                      equipment:
+                        type: string
+                        description: equipment
+                      gifUrl:
+                        type: string
+                        description: gif url
+                      name:
+                        type: string
+                        description: exercise name
+                      target:
+                        type: string
+                        description: target
+                      burnedCalories:
+                        type: number
+                        description: burned calories
+                      time:
+                        type: number
+                        description: time for exercise
+                  date:
+                    type: string
+                    description: dairy exercise date
+                  time:
+                    type: number
+                    description: time for exercise
+                  calories:
+                    type: number
+                    description: calories amount
+                  _id:
+                    type: string
+                    description: diary exercise id
+            addProducts:
+              type: array
+              items:
+                type: object
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Message
+  securitySchemes:
+    Bearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

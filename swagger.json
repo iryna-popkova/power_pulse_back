@@ -612,9 +612,7 @@
             "name": "date",
             "required": true,
             "description": "Date for which to get diary",
-            "schema": {
-              "$ref": "#/components/schemas/DiaryResponse"
-            }
+            "schema": { "type": "string" }
           }
         ],
         "responses": {
@@ -765,9 +763,7 @@
             "name": "id",
             "required": true,
             "description": "Diary product ID",
-            "schema": {
-              "$ref": "#/components/schemas/DiaryProductRequest"
-            }
+            "schema": { "type": "string" }
           }
         ],
         "security": [{ "Bearer": [] }],
@@ -820,9 +816,7 @@
             "name": "id",
             "required": true,
             "description": "Diary exercise ID",
-            "schema": {
-              "$ref": "#/components/schemas/DiaryExercisesRequest"
-            }
+            "schema": { "type": "string" }
           }
         ],
         "security": [{ "Bearer": [] }],
