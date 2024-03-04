@@ -1,5 +1,6 @@
 const { User } = require("../../models");
 const calculateBMR = require("../../utils/calculateBMR");
+const { HttpError } = require("../../helpers");
 
 const updateUserParams = async (req, res) => {
   try {
@@ -23,6 +24,7 @@ const updateUserParams = async (req, res) => {
     updatedUser.bmr = bmr;
 
     await updatedUser.save();
+    console.log(updatedUser);
 
     res.status(200).json({
       user: {
@@ -38,6 +40,7 @@ const updateUserParams = async (req, res) => {
         avatarURL: updatedUser.avatarURL,
       },
       bmr,
+      dailyRateSports: updatedUser.dailyRateSports,
     });
   } catch (error) {
     throw HttpError(500, "Internal Server Error");

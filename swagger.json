@@ -5,7 +5,7 @@
     "title": "Power Pulse API",
     "description": "Documentation for Power Pulse API",
     "license": {
-      "name": "Power Pulse API by blended-6 team ",
+      "name": "Power Pulse API by project-group-4",
       "url": "https://github.com/iryna-popkova/power_pulse_back"
     }
   },
@@ -37,12 +37,11 @@
   ],
 
   "paths": {
-    "users/register": {
+    "/users/register": {
       "post": {
         "tags": ["Auth"],
         "summary": "User registration",
         "parameters": [],
-        "security": [{ "Bearer": [] }],
         "requestBody": {
           "description": "Registration's object",
           "required": true,
@@ -67,23 +66,11 @@
           },
           "400": {
             "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           },
           "409": {
             "description": "Email already in use",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           }
         }
       }
@@ -93,7 +80,6 @@
         "tags": ["Auth"],
         "summary": "User login",
         "parameters": [],
-        "security": [{ "Bearer": [] }],
         "requestBody": {
           "description": "Login person",
           "required": true,
@@ -105,7 +91,7 @@
             }
           }
         },
-        "LoginResponse": {
+        "responses": {
           "200": {
             "description": "Successful",
             "content": {
@@ -118,23 +104,11 @@
           },
           "400": {
             "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           },
           "401": {
             "description": "Email or password invalid",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           }
         }
       }
@@ -160,85 +134,16 @@
           },
           "404": {
             "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           },
           "500": {
             "description": "Server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           }
         },
         "401": {
           "description": "Unauthorized",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ErrorResponse"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/users/dailyNorms": {
-      "get": {
-        "tags": ["Auth"],
-        "summary": "Get user's daily norms",
-        "parameters": [],
-        "security": [{ "Bearer": [] }],
-        "requestBody": {},
-        "responses": {
-          "200": {
-            "description": "Successful",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DailyNormsResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        },
-        "401": {
-          "description": "Unauthorized",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ErrorResponse"
-              }
-            }
-          }
+          "content": {}
         }
       }
     },
@@ -273,43 +178,19 @@
           },
           "400": {
             "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           },
           "401": {
             "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           },
           "404": {
             "description": "User not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           },
           "500": {
             "description": "Server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           }
         }
       }
@@ -344,43 +225,19 @@
           },
           "400": {
             "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           },
           "401": {
             "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           },
           "404": {
             "description": "User not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           },
           "500": {
             "description": "Server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           }
         }
       }
@@ -410,33 +267,15 @@
           },
           "401": {
             "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           },
           "404": {
             "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           },
           "500": {
             "description": "Server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           }
         }
       }
@@ -460,33 +299,15 @@
           },
           "401": {
             "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           },
           "404": {
             "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           },
           "500": {
             "description": "Server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           }
         }
       }
@@ -510,33 +331,15 @@
           },
           "401": {
             "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           },
           "404": {
             "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           },
           "500": {
             "description": "Server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           }
         }
       }
@@ -560,33 +363,15 @@
           },
           "401": {
             "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           },
           "404": {
             "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           },
           "500": {
             "description": "Server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           }
         }
       }
@@ -601,7 +386,7 @@
         "requestBody": {},
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "Successful",
             "content": {
               "application/json": {
                 "schema": {
@@ -612,13 +397,7 @@
           },
           "404": {
             "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           }
         }
       }
@@ -632,7 +411,7 @@
         "requestBody": {},
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "Successful",
             "content": {
               "application/json": {
                 "schema": {
@@ -643,19 +422,13 @@
           },
           "404": {
             "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           }
         }
       }
     },
 
-    "diary/{date}": {
+    "/diary/{date}": {
       "get": {
         "tags": ["Diary"],
         "summary": "Get diary by user and date",
@@ -685,30 +458,18 @@
           },
           "404": {
             "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           },
 
           "400": {
             "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           }
         }
       }
     },
 
-    "diary/products": {
+    "/diary/products": {
       "post": {
         "tags": ["Diary"],
         "summary": "User diary products",
@@ -738,28 +499,16 @@
           },
           "400": {
             "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           },
           "500": {
             "description": "Server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           }
         }
       }
     },
-    "diary/exercises": {
+    "/diary/exercises": {
       "post": {
         "tags": ["Diary"],
         "summary": "User diary exercises",
@@ -789,28 +538,16 @@
           },
           "400": {
             "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           },
           "500": {
             "description": "Server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           }
         }
       }
     },
-    "diary/products/{id}": {
+    "/diary/products/{id}": {
       "delete": {
         "tags": ["Diary"],
         "summary": "Delete user diary products",
@@ -831,39 +568,21 @@
           },
           "400": {
             "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           },
           "404": {
             "description": "Product not found in diary",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           }
+        },
+        "500": {
+          "description": "Server error",
+          "content": {}
         }
       }
     },
 
-    "diary/exercises/{id}": {
+    "/diary/exercises/{id}": {
       "delete": {
         "tags": ["Diary"],
         "summary": "Delete user diary exercises",
@@ -884,33 +603,15 @@
           },
           "400": {
             "description": "Bad request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           },
           "404": {
             "description": "Exercise not found in diary",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           },
           "500": {
             "description": "Server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "content": {}
           }
         }
       }
@@ -942,22 +643,9 @@
       "RegistrationResponse": {
         "type": "object",
         "properties": {
-          "user": {
-            "type": "object",
-            "properties": {
-              "name": {
-                "type": "string",
-                "description": "User's name"
-              },
-              "email": {
-                "type": "string",
-                "description": "User's email"
-              }
-            }
-          },
-          "token": {
+          "email": {
             "type": "string",
-            "description": "JWT token for authentication"
+            "description": "User's email"
           }
         }
       },
@@ -980,19 +668,6 @@
       "LoginResponse": {
         "type": "object",
         "properties": {
-          "user": {
-            "type": "object",
-            "properties": {
-              "name": {
-                "type": "string",
-                "description": "User's name"
-              },
-              "email": {
-                "type": "string",
-                "description": "User's email"
-              }
-            }
-          },
           "token": {
             "type": "string",
             "description": "JWT token for authentication"
@@ -1059,6 +734,10 @@
             "type": "number",
             "description": "User's bmr"
           },
+          "dailyRateSports": {
+            "type": "number",
+            "description": "User's daily rate for sports"
+          },
           "token": {
             "type": "string",
             "description": "JWT token for authentication"
@@ -1070,7 +749,6 @@
         "type": "object",
         "required": [
           "name",
-          "email",
           "blood",
           "sex",
           "height",
@@ -1083,10 +761,6 @@
           "name": {
             "type": "string",
             "description": "User's name"
-          },
-          "email": {
-            "type": "string",
-            "description": "User's email"
           },
           "blood": {
             "type": "number",
@@ -1176,6 +850,10 @@
           "bmr": {
             "type": "number",
             "description": "User's BMR"
+          },
+          "dailyRateSports": {
+            "type": "number",
+            "description": "User's daily rate for sports"
           }
         }
       },
@@ -1193,41 +871,20 @@
       "AvatarResponse": {
         "type": "object",
         "properties": {
-          "data": {
-            "type": "object",
-            "properties": {
-              "avatarURL": {
-                "type": "string",
-                "description": "User's avatar url"
-              }
-            }
-          }
-        }
-      },
-
-      "DailyNormsResponse": {
-        "type": "object",
-        "properties": {
-          "bmr": {
-            "type": "number",
-            "description": "bmr"
-          },
-          "dailyRateSports": {
-            "type": "number",
-            "description": "110"
+          "avatarURL": {
+            "type": "string",
+            "description": "User's avatar url"
           }
         }
       },
 
       "CategoriesResponse": {
-        "type": "object",
-        "properties": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "description": "The names of product categories"
-          }
-        }
+        "type": "array",
+        "items": {
+          "type": "string",
+          "description": "The names of product categories"
+        },
+        "example": ["berries", "cereals", "dairy"]
       },
 
       "ProductsResponse": {
@@ -1276,7 +933,7 @@
             "description": "List of not recommended products"
           },
 
-          "dataUser": {
+          "dataProduct": {
             "type": "array",
             "items": {
               "type": "object",

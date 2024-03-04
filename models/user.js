@@ -84,7 +84,7 @@ const userSchema = new Schema(
     },
     dailyRateSports: {
       type: Number,
-      default: 0,
+      default: 110,
     },
     owner: {
       type: Schema.Types.ObjectId,

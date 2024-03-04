@@ -4,7 +4,6 @@ const logout = require("./logout");
 const getCurrent = require("./getCurrent");
 const updateAvatar = require("./updateAvatar");
 const updateUserParams = require("./updateUserParams");
-const getDailyNorms = require("./getDailyNorms");
 
 module.exports = {
   register,
@@ -13,5 +12,4 @@ module.exports = {
   getCurrent,
   updateAvatar,
   updateUserParams,
-  getDailyNorms,
 };

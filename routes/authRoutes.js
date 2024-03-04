@@ -8,7 +8,6 @@ const {
   logout,
   updateAvatar,
   getCurrent,
-  getDailyNorms,
   updateUserParams,
 } = require("../controllers/authControllers");
 
@@ -35,7 +34,6 @@ authRouter.patch(
   validateBody(schemas.updateParamsSchema),
   ctrlWrapper(updateUserParams)
 );
-authRouter.get("/dailyNorms", authenticate, ctrlWrapper(getDailyNorms));
 authRouter.post("/logout", authenticate, ctrlWrapper(logout));
 authRouter.patch(
   "/avatars",
