@@ -1166,43 +1166,68 @@
         "type": "object",
         "properties": {
           "recommendedProducts": {
-            "type": "integer",
-            "description": "List of recommended products"
-          },
-
-          "notRecommendedProducts": {
-            "type": "integer",
-            "description": "List of not recommended products"
-          },
-
-          "dataProduct": {
+            "description": "List of recommended products",
             "type": "array",
             "items": {
               "type": "object",
               "properties": {
                 "_id": {
                   "type": "string",
-                  "description": "product id"
+                  "description": "Products id"
                 },
                 "weight": {
-                  "type": "number",
-                  "description": "product weight"
+                  "type": "integer",
+                  "description": "Product weight, grams"
                 },
                 "calories": {
-                  "type": "number",
-                  "description": "product calories"
+                  "type": "integer",
+                  "description": "Calorie content of 100 grams of product"
                 },
                 "category": {
                   "type": "string",
-                  "description": "product category"
+                  "description": "Product category"
                 },
                 "title": {
                   "type": "string",
-                  "description": "product title"
+                  "description": "Product name"
                 },
                 "groupBloodNotAllowed": {
                   "type": "object",
-                  "description": "Blood group"
+                  "description": "Recommend products by blood type"
+                }
+              }
+            }
+          },
+
+          "notRecommendedProducts": {
+            "description": "List of recommended products",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "_id": {
+                  "type": "string",
+                  "description": "Products id"
+                },
+                "weight": {
+                  "type": "integer",
+                  "description": "Product weight, grams"
+                },
+                "calories": {
+                  "type": "integer",
+                  "description": "Calorie content of 100 grams of product"
+                },
+                "category": {
+                  "type": "string",
+                  "description": "Product category"
+                },
+                "title": {
+                  "type": "string",
+                  "description": "Product name"
+                },
+                "groupBloodNotAllowed": {
+                  "type": "object",
+                  "description": "Recommend products by blood type"
                 }
               }
             }
