@@ -75,7 +75,7 @@ module.exports = filteredProducts;
 //     const userBloodType = req.user.blood;
 //     const keyWord = req.query.keyword;
 
-//     const recommendedProducts = await Products.find({
+//     const recommendedProducts = await Product.find({
 //       $and: [
 //         { name: { $regex: keyWord, $options: "i" } },
 //         {
@@ -87,7 +87,7 @@ module.exports = filteredProducts;
 //       ],
 //     });
 
-//     const notRecommendedProducts = await Products.find({
+//     const notRecommendedProducts = await Product.find({
 //       $and: [
 //         { name: { $regex: keyWord, $options: "i" } },
 //         { [`groupBloodNotAllowed.${userBloodType}`]: true },
