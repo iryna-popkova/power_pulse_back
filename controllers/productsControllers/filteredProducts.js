@@ -7,7 +7,7 @@ const filteredProducts = async (req, res) => {
     const { keyword, category, recommended } = req.query;
     const userBloodType = req.user.blood;
 
-    if (!keyword && !category && recommended === undefined) {
+    if (!keyword && !category && recommended === "undefined") {
       return getAllProducts(req, res);
     }
 

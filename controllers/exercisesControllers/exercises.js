@@ -13,11 +13,23 @@ const getAllExercises = async (req, res) => {
   }
 };
 
+const getAllFilters = async (req, res) => {
+  try {
+    const bodyParts = await Bodyparts.find();
+    const equipments = await Equipments.find();
+    const muscles = await Muscles.find();
+
+    res.status(200).json({ bodyParts, equipments, muscles });
+  } catch (error) {
+    throw HttpError(500, "Internal Server Error");
+  }
+};
+
 const filterExercises = async (req, res) => {
   try {
-    const { filter, value } = req.query;
+    const { filter, name } = req.query;
 
-    if (!filter || !value) {
+    if (!filter || !name) {
       throw HttpError(400, "Filter and value parameters are required.");
     }
 
@@ -25,13 +37,13 @@ const filterExercises = async (req, res) => {
 
     switch (filter) {
       case "bodyPart":
-        filteredExercises = await Bodyparts.find({ bodyPart: value });
+        filteredExercises = await Bodyparts.find({ bodyPart: name });
         break;
       case "equipment":
-        filteredExercises = await Equipments.find({ equipment: value });
+        filteredExercises = await Equipments.find({ equipment: name });
         break;
       case "muscle":
-        filteredExercises = await Muscles.find({ muscle: value });
+        filteredExercises = await Muscles.find({ muscle: name });
         break;
       default:
         throw HttpError(400, "Invalid filter parameter.");
