@@ -4,8 +4,8 @@ const { HttpError } = require("../../helpers");
 
 const updateUserParams = async (req, res) => {
   try {
-    const { id } = req.user;
-    const updatedUser = await User.findOneAndUpdate({ id }, req.body, {
+    const { email } = req.user;
+    const updatedUser = await User.findOneAndUpdate({ email }, req.body, {
       new: true,
     });
 

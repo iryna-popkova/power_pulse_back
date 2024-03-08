@@ -1,3 +1,6 @@
+const { Product } = require("../../models");
+const { HttpError } = require("../../helpers");
+
 // const filteredProducts = async (req, res) => {
 //   const { category, search, recommended } = req.query;
 //   const where = {};
@@ -67,15 +70,12 @@
 
 // module.exports = filteredProducts;
 
-const { Product } = require("../../models");
-const { HttpError } = require("../../helpers");
-
 const filteredProducts = async (req, res) => {
   try {
     const userBloodType = req.user.blood;
     const keyWord = req.query.keyword;
 
-    const recommendedProducts = await Product.find({
+    const recommendedProducts = await Products.find({
       $and: [
         { name: { $regex: keyWord, $options: "i" } },
         {
@@ -87,7 +87,7 @@ const filteredProducts = async (req, res) => {
       ],
     });
 
-    const notRecommendedProducts = await Product.find({
+    const notRecommendedProducts = await Products.find({
       $and: [
         { name: { $regex: keyWord, $options: "i" } },
         { [`groupBloodNotAllowed.${userBloodType}`]: true },
