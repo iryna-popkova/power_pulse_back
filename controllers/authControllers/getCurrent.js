@@ -1,4 +1,4 @@
-const HttpError = require("../../helpers");
+const { HttpError } = require("../../helpers");
 
 const getCurrent = async (req, res) => {
   try {
@@ -7,8 +7,6 @@ const getCurrent = async (req, res) => {
     if (!user) {
       throw HttpError(404, "User not found");
     }
-
-    user.dailyRateSports = 110;
 
     res.status(200).json({
       user: {

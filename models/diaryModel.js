@@ -85,17 +85,41 @@ const diarySchema = new Schema(
 diarySchema.post("save", handleMongooseError);
 
 const productsSchema = Joi.object({
-  productId: Joi.string().required(),
-  date: Joi.string().pattern(dateRegex).required(),
-  amount: Joi.number().min(1).required(),
-  calories: Joi.number().min(1).required(),
+  productId: Joi.string().required().messages({
+    "any.required": "Missing required productId field",
+  }),
+  date: Joi.string().pattern(dateRegex).required().messages({
+    "any.required": "Missing required date field",
+    "string.pattern.base":
+      "Invalid date format. Please use the format DD-MM-YYYY.",
+  }),
+  amount: Joi.number().min(1).required().messages({
+    "any.required": "Missing required amount field",
+    "number.min": "Amount must be a number greater than 1",
+  }),
+  calories: Joi.number().min(1).required().messages({
+    "any.required": "Missing required calories field",
+    "number.min": "Calories must be a number greater than 1",
+  }),
 });
 
 const exercisesSchema = Joi.object({
-  exerciseId: Joi.string().required(),
-  date: Joi.string().pattern(dateRegex).required(),
-  time: Joi.number().min(1).required(),
-  calories: Joi.number().min(1).required(),
+  exerciseId: Joi.string().required().messages({
+    "any.required": "Missing required exerciseId field",
+  }),
+  date: Joi.string().pattern(dateRegex).required().messages({
+    "any.required": "Missing required date field",
+    "string.pattern.base":
+      "Invalid date format. Please use the format DD-MM-YYYY.",
+  }),
+  time: Joi.number().min(1).required().messages({
+    "any.required": "Missing required time field",
+    "number.min": "Time must be a number greater than or equal to 1",
+  }),
+  calories: Joi.number().min(1).required().messages({
+    "any.required": "Missing required calories field",
+    "number.min": "Calories must be a number greater than or equal to 1",
+  }),
 });
 
 const diarySchemas = {
