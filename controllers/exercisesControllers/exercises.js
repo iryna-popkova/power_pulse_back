@@ -1,59 +1,3 @@
-// const { HttpError } = require("../../helpers");
-
-// const {
-//   ExerciseName,
-
-//   Bodyparts,
-//   Muscles,
-//   Equipments,
-// } = require("../../models");
-
-// const getAllExercisesName = async (req, res) => {
-//   const result = await ExerciseName.find();
-//   if (!result) {
-//     throw HttpError(404, "Not found");
-//   }
-//   res.json(result);
-// };
-
-// const getAllBodyParts = async (req, res) => {
-//   const result = await Bodyparts.find({
-//     filter: "Body parts",
-//   });
-
-//   if (!result) {
-//     throw HttpError(404, "Not found");
-//   }
-//   res.json(result);
-// };
-
-// const getAllMuscles = async (req, res) => {
-//   const result = await Muscles.find({ filter: "Muscles" });
-
-//   if (!result) {
-//     throw HttpError(404, "Not found");
-//   }
-//   res.json(result);
-// };
-
-// const getAllEquipments = async (req, res) => {
-//   const result = await Equipments.find({
-//     filter: "Equipment",
-//   });
-
-//   if (!result) {
-//     throw HttpError(404, "Not found");
-//   }
-//   res.json(result);
-// };
-
-// module.exports = {
-//   getAllExercisesName,
-//   getAllBodyParts,
-//   getAllMuscles,
-//   getAllEquipments,
-// };
-
 const ExerciseName = require("../../models/exercisesName");
 const Bodyparts = require("../../models/bodyParts");
 const Equipments = require("../../models/equipments");
@@ -68,32 +12,6 @@ const getAllExercises = async (req, res) => {
     throw HttpError(500, "Internal Server Error");
   }
 };
-
-// const getAllFilters = async (req, res) => {
-//   try {
-//     const { filter, value } = req.query;
-//     let filteredData;
-
-//     switch (filter) {
-//       case "bodyParts":
-//         filteredData = await Bodyparts.find({ name: value });
-//         break;
-//       case "equipments":
-//         filteredData = await Equipments.find({ name: value });
-//         break;
-//       case "muscles":
-//         filteredData = await Muscles.find({ name: value });
-//         break;
-//       default:
-//         filteredData = await ExerciseName.find();
-//     }
-
-//     res.status(200).json(filteredData);
-//   } catch (error) {
-//     console.error(error); // Log the error for debugging
-//     res.status(500).json({ error: "Internal Server Error" });
-//   }
-// };
 
 const getAllFilters = async (req, res) => {
   try {
