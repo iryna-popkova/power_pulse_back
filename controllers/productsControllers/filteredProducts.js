@@ -11,11 +11,7 @@ const filteredProducts = async (req, res) => {
       return getAllProducts(req, res);
     }
 
-    const baseQuery = {
-      keyword: "",
-      category: "",
-      recommended: "all",
-    };
+    let baseQuery = {};
 
     if (keyword) {
       baseQuery.$text = { $search: keyword };
