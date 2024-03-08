@@ -5,11 +5,11 @@ const exerciseRouter = express.Router();
 const { authenticate } = require("../midleware");
 const {
   getAllExercises,
-  getAllFilters,
+  filterExercises,
 } = require("../controllers/exercisesControllers");
 
 exerciseRouter.get("/", authenticate, getAllExercises);
-exerciseRouter.get("/filters", authenticate, getAllFilters);
+exerciseRouter.get("/filters", authenticate, filterExercises);
 
 // const ctrl = require("../controllers/exercisesControllers");
 

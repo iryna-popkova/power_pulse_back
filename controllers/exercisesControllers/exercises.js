@@ -13,16 +13,36 @@ const getAllExercises = async (req, res) => {
   }
 };
 
-const getAllFilters = async (req, res) => {
+const filterExercises = async (req, res) => {
   try {
-    const bodyParts = await Bodyparts.find();
-    const equipments = await Equipments.find();
-    const muscles = await Muscles.find();
+    const { filter, value } = req.query;
 
-    res.status(200).json({ bodyParts, equipments, muscles });
+    if (!filter || !value) {
+      throw HttpError(400, "Filter and value parameters are required.");
+    }
+
+    let filteredExercises;
+
+    switch (filter) {
+      case "bodyPart":
+        filteredExercises = await Bodyparts.find({ bodyPart: value });
+        break;
+      case "equipment":
+        filteredExercises = await Equipments.find({ equipment: value });
+        break;
+      case "muscle":
+        filteredExercises = await Muscles.find({ muscle: value });
+        break;
+      default:
+        throw HttpError(400, "Invalid filter parameter.");
+    }
+
+    res.status(200).json(filteredExercises);
   } catch (error) {
-    throw HttpError(500, "Internal Server Error");
+    res
+      .status(error.status || 500)
+      .json({ error: error.message || "Internal Server Error" });
   }
 };
 
-module.exports = { getAllFilters, getAllExercises };
+module.exports = { getAllExercises, filterExercises };
