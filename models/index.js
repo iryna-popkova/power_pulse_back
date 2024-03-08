@@ -1,7 +1,6 @@
 const { User, schemas } = require("./user");
 const { Diary, diarySchemas } = require("./diaryModel");
 const Product = require("./productsModel");
-const Filter = require("./filtersModel");
 const ExerciseName = require("./exercisesName");
 const Bodyparts = require("./bodyParts");
 const Muscles = require("./muscles");
@@ -13,7 +12,6 @@ module.exports = {
   Diary,
   diarySchemas,
   Product,
-  Filter,
   ExerciseName,
   Bodyparts,
   Muscles,
