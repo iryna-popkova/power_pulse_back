@@ -69,6 +69,32 @@ const getAllExercises = async (req, res) => {
   }
 };
 
+// const getAllFilters = async (req, res) => {
+//   try {
+//     const { filter, value } = req.query;
+//     let filteredData;
+
+//     switch (filter) {
+//       case "bodyParts":
+//         filteredData = await Bodyparts.find({ name: value });
+//         break;
+//       case "equipments":
+//         filteredData = await Equipments.find({ name: value });
+//         break;
+//       case "muscles":
+//         filteredData = await Muscles.find({ name: value });
+//         break;
+//       default:
+//         filteredData = await ExerciseName.find();
+//     }
+
+//     res.status(200).json(filteredData);
+//   } catch (error) {
+//     console.error(error); // Log the error for debugging
+//     res.status(500).json({ error: "Internal Server Error" });
+//   }
+// };
+
 const getAllFilters = async (req, res) => {
   try {
     const bodyParts = await Bodyparts.find();
