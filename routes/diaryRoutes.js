@@ -1,5 +1,5 @@
 const express = require("express");
-const { validateBody, authenticate } = require("../midleware");
+const { validateBody, authenticate, validateParams } = require("../midleware");
 const { ctrlWrapper } = require("../helpers");
 const { diarySchemas } = require("../models");
 const {
@@ -29,12 +29,14 @@ diaryRouter.post(
 diaryRouter.delete(
   "/products/:id",
   authenticate,
+  validateParams,
   ctrlWrapper(deleteDiaryProducts)
 );
 
 diaryRouter.delete(
   "/exercises/:id",
   authenticate,
+  validateParams,
   ctrlWrapper(deleteDiaryExercises)
 );
 
