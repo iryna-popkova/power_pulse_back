@@ -84,7 +84,7 @@ const userSchema = new Schema(
     },
     dailyRateSports: {
       type: Number,
-      default: 110,
+      default: 0,
     },
   },
   {
