@@ -44,54 +44,19 @@ const { HttpError } = require("../../helpers");
 
 // module.exports = filteredProducts;
 
-const filteredProducts = async (req, res) => {
-  try {
-    const userBloodType = req.user.blood;
-
-    const recommendedProducts = await Product.find({
-      $or: [
-        { [`groupBloodNotAllowed.${userBloodType}`]: { $exists: false } },
-        { [`groupBloodNotAllowed.${userBloodType}`]: false },
-      ],
-    });
-
-    const notRecommendedProducts = await Product.find({
-      [`groupBloodNotAllowed.${userBloodType}`]: true,
-    });
-
-    res.status(200).json({
-      recommendedProducts,
-      notRecommendedProducts,
-    });
-  } catch (error) {
-    throw HttpError(500, "Internal Server Error");
-  }
-};
-
-module.exports = filteredProducts;
-
 // const filteredProducts = async (req, res) => {
 //   try {
 //     const userBloodType = req.user.blood;
-//     const keyWord = req.query.keyword;
 
-//     const recommendedProducts = await Products.find({
-//       $and: [
-//         { name: { $regex: keyWord, $options: "i" } },
-//         {
-//           $or: [
-//             { [`groupBloodNotAllowed.${userBloodType}`]: { $exists: false } },
-//             { [`groupBloodNotAllowed.${userBloodType}`]: false },
-//           ],
-//         },
+//     const recommendedProducts = await Product.find({
+//       $or: [
+//         { [`groupBloodNotAllowed.${userBloodType}`]: { $exists: false } },
+//         { [`groupBloodNotAllowed.${userBloodType}`]: false },
 //       ],
 //     });
 
-//     const notRecommendedProducts = await Products.find({
-//       $and: [
-//         { name: { $regex: keyWord, $options: "i" } },
-//         { [`groupBloodNotAllowed.${userBloodType}`]: true },
-//       ],
+//     const notRecommendedProducts = await Product.find({
+//       [`groupBloodNotAllowed.${userBloodType}`]: true,
 //     });
 
 //     res.status(200).json({
@@ -99,9 +64,44 @@ module.exports = filteredProducts;
 //       notRecommendedProducts,
 //     });
 //   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ message: "Internal Server Error" });
+//     throw HttpError(500, "Internal Server Error");
 //   }
 // };
 
 // module.exports = filteredProducts;
+
+const filteredProducts = async (req, res) => {
+  try {
+    const userBloodType = req.user.blood;
+    const keyWord = req.query.keyword;
+
+    const recommendedProducts = await Products.find({
+      $and: [
+        { name: { $regex: keyWord, $options: "i" } },
+        {
+          $or: [
+            { [`groupBloodNotAllowed.${userBloodType}`]: { $exists: false } },
+            { [`groupBloodNotAllowed.${userBloodType}`]: false },
+          ],
+        },
+      ],
+    });
+
+    const notRecommendedProducts = await Products.find({
+      $and: [
+        { name: { $regex: keyWord, $options: "i" } },
+        { [`groupBloodNotAllowed.${userBloodType}`]: true },
+      ],
+    });
+
+    res.status(200).json({
+      recommendedProducts,
+      notRecommendedProducts,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+module.exports = filteredProducts;
