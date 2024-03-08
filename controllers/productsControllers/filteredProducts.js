@@ -7,11 +7,11 @@ const filteredProducts = async (req, res) => {
     const { keyword, category, recommended } = req.query;
     const userBloodType = req.user.blood;
 
-    const baseQuery = {};
-
-    if (!baseQuery) {
-      getAllProducts();
+    if (!keyword && !category && recommended === undefined) {
+      return getAllProducts(req, res);
     }
+
+    let baseQuery = {};
 
     if (keyword) {
       baseQuery.$text = { $search: keyword };
@@ -20,8 +20,11 @@ const filteredProducts = async (req, res) => {
       baseQuery.category = category;
     }
     if (recommended !== undefined) {
-      baseQuery[`groupBloodNotAllowed.${userBloodType}`] =
-        recommended === "true";
+      if (recommended === "true") {
+        baseQuery[`groupBloodNotAllowed.${userBloodType}`] = false;
+      } else if (recommended === "false") {
+        baseQuery[`groupBloodNotAllowed.${userBloodType}`] = true;
+      }
     }
 
     const products = await Product.find(baseQuery);
