@@ -13,6 +13,8 @@ const updateUserParams = async (req, res) => {
       throw HttpError(404, "User not found");
     }
 
+    updatedUser.dailyRateSports = 110;
+
     const { desiredWeight, height, birthday, sex, levelActivity } = updatedUser;
     const bmr = calculateBMR(
       desiredWeight,
