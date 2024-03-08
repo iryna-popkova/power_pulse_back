@@ -86,10 +86,6 @@ const userSchema = new Schema(
       type: Number,
       default: 110,
     },
-    owner: {
-      type: Schema.Types.ObjectId,
-      ref: "user",
-    },
   },
   {
     versionKey: false,
