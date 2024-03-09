@@ -934,7 +934,7 @@
               "blood": {
                 "type": "number",
                 "description": "User's blood type",
-                "enum": ["1", "2", "3", "4"]
+                "enum": [1, 2, 3, 4]
               },
               "sex": {
                 "type": "string",
@@ -956,7 +956,7 @@
               "levelActivity": {
                 "type": "number",
                 "description": "User's level activity",
-                "enum": ["1", "2", "3", "4", "5"]
+                "enum": [1, 2, 3, 4, 5]
               },
               "avatarURL": {
                 "type": "string",
@@ -979,10 +979,6 @@
           "dailyRateSports": {
             "type": "number",
             "description": "User's daily rate for sports"
-          },
-          "token": {
-            "type": "string",
-            "description": "JWT token for authentication"
           }
         }
       },
@@ -1007,7 +1003,7 @@
           "blood": {
             "type": "number",
             "description": "User's blood type",
-            "enum": ["1", "2", "3", "4"]
+            "enum": [1, 2, 3, 4]
           },
           "sex": {
             "type": "string",
@@ -1029,7 +1025,7 @@
           "levelActivity": {
             "type": "number",
             "description": "User's level activity",
-            "enum": ["1", "2", "3", "4", "5"]
+            "enum": [1, 2, 3, 4, 5]
           },
           "birthday": {
             "type": "string",
@@ -1055,7 +1051,7 @@
               "blood": {
                 "type": "number",
                 "description": "User's blood type",
-                "enum": ["1", "2", "3", "4"]
+                "enum": [1, 2, 3, 4]
               },
               "sex": {
                 "type": "string",
@@ -1077,7 +1073,7 @@
               "levelActivity": {
                 "type": "number",
                 "description": "User's level activity",
-                "enum": ["1", "2", "3", "4", "5"]
+                "enum": [1, 2, 3, 4, 5]
               },
               "birthday": {
                 "type": "string",
@@ -1165,42 +1161,8 @@
       "ProductsFilterResponse": {
         "type": "object",
         "properties": {
-          "recommendedProducts": {
-            "description": "List of recommended products",
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "_id": {
-                  "type": "string",
-                  "description": "Products id"
-                },
-                "weight": {
-                  "type": "integer",
-                  "description": "Product weight, grams"
-                },
-                "calories": {
-                  "type": "integer",
-                  "description": "Calorie content of 100 grams of product"
-                },
-                "category": {
-                  "type": "string",
-                  "description": "Product category"
-                },
-                "title": {
-                  "type": "string",
-                  "description": "Product name"
-                },
-                "groupBloodNotAllowed": {
-                  "type": "object",
-                  "description": "Recommend products by blood type"
-                }
-              }
-            }
-          },
-
-          "notRecommendedProducts": {
-            "description": "List of recommended products",
+          "products": {
+            "description": "List of filtered products",
             "type": "array",
             "items": {
               "type": "object",
@@ -1275,30 +1237,34 @@
           }
         }
       },
-
       "ExercisesFiltersResponse": {
-        "type": "object",
-        "properties": {
-          "bodyParts": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "_id": { "type": "string", "description": "exercise id" },
-                "filter": {
-                  "type": "string",
-                  "description": "Exercises type"
-                },
-                "name": {
-                  "type": "string",
-                  "description": "Exercises name"
-                },
-                "imgURL": {
-                  "type": "string",
-                  "description": "Exercises image"
-                }
-              }
-            }
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "_id": { "type": "string", "description": "exercise id" },
+            "bodyPart": {
+              "type": "string",
+              "description": "Body part type"
+            },
+            "equipment": {
+              "type": "string",
+              "description": "Equipment name"
+            },
+            "gifUrl": { "type": "string", "description": "Exercises gif" },
+            "name": {
+              "type": "string",
+              "description": "Exercises name"
+            },
+            "target": {
+              "type": "string",
+              "description": "Muscles type"
+            },
+            "burnedCalories": {
+              "type": "number",
+              "description": "Burned calories"
+            },
+            "time": { "type": "number", "description": "Time for exercise" }
           }
         }
       },

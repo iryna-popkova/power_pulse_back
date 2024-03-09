@@ -24,7 +24,6 @@ const getCurrent = async (req, res) => {
       },
       bmr: user.bmr,
       dailyRateSports: user.dailyRateSports,
-      token: user.token,
     });
   } catch (error) {
     throw HttpError(500, "Internal Server Error");
