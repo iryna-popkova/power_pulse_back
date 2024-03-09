@@ -7,15 +7,16 @@ const filteredProducts = async (req, res) => {
     const { keyword, category, recommended } = req.query;
     const userBloodType = req.user.blood;
 
-    if (!keyword && !category && recommended === "undefined") {
+    if (!keyword && !category && recommended === undefined) {
       return getAllProducts(req, res);
     }
 
     let baseQuery = {};
 
     if (keyword) {
-      baseQuery.$text = { $search: keyword };
+      baseQuery.title = { $regex: keyword, $options: "i" };
     }
+
     if (category) {
       baseQuery.category = category;
     }
