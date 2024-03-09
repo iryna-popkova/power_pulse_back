@@ -1,9 +1,10 @@
 const ExerciseName = require("../../models/exercisesName");
+const { Filter } = require("../../models/filtersModel");
 const { HttpError } = require("../../helpers");
 
 const getAllExercises = async (req, res) => {
   try {
-    const exercises = await ExerciseName.find();
+    const exercises = await Filter.find();
     res.status(200).json(exercises);
   } catch (error) {
     throw HttpError(500, "Internal Server Error");
