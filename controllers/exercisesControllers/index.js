@@ -1,11 +1,6 @@
-const {
-  getAllExercises,
-  getAllFilters,
-  filterExercises,
-} = require("./exercises");
+const { getAllExercises, filterExercises } = require("./exercises");
 
 module.exports = {
   getAllExercises,
-  getAllFilters,
   filterExercises,
 };

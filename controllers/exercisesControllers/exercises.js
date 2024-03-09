@@ -1,25 +1,10 @@
 const ExerciseName = require("../../models/exercisesName");
-const Bodyparts = require("../../models/bodyParts");
-const Equipments = require("../../models/equipments");
-const Muscles = require("../../models/muscles");
 const { HttpError } = require("../../helpers");
 
 const getAllExercises = async (req, res) => {
   try {
     const exercises = await ExerciseName.find();
     res.status(200).json(exercises);
-  } catch (error) {
-    throw HttpError(500, "Internal Server Error");
-  }
-};
-
-const getAllFilters = async (req, res) => {
-  try {
-    const bodyParts = await Bodyparts.find();
-    const equipments = await Equipments.find();
-    const muscles = await Muscles.find();
-
-    res.status(200).json({ bodyParts, equipments, muscles });
   } catch (error) {
     throw HttpError(500, "Internal Server Error");
   }
@@ -37,13 +22,13 @@ const filterExercises = async (req, res) => {
 
     switch (filter) {
       case "bodyPart":
-        filteredExercises = await Bodyparts.find({ bodyPart: name });
+        filteredExercises = await ExerciseName.find({ bodyPart: name });
         break;
       case "equipment":
-        filteredExercises = await Equipments.find({ equipment: name });
+        filteredExercises = await ExerciseName.find({ equipment: name });
         break;
-      case "muscle":
-        filteredExercises = await Muscles.find({ muscle: name });
+      case "target":
+        filteredExercises = await ExerciseName.find({ target: name });
         break;
       default:
         throw HttpError(400, "Invalid filter parameter.");
