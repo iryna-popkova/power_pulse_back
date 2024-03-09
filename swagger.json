@@ -9,6 +9,8 @@
       "url": "https://github.com/iryna-popkova/power_pulse_back"
     }
   },
+  "consumes": ["application/json", "multipart/form-data"],
+  "produces": ["application/json", "multipart/form-data"],
   "servers": [
     { "url": "https://power-pulse-back.onrender.com" },
     {
@@ -539,7 +541,7 @@
     "/exercises": {
       "get": {
         "tags": ["Exercises"],
-        "summary": "Get all exercises",
+        "summary": "Get all filters of exercises",
         "parameters": [],
         "security": [{ "Bearer": [] }],
         "responses": {
@@ -1204,39 +1206,24 @@
           "properties": {
             "_id": {
               "type": "string",
-              "description": "product id"
+              "description": "object id"
             },
-            "bodyPart": {
+            "filter": {
               "type": "string",
-              "description": "Body part type"
-            },
-            "equipment": {
-              "type": "string",
-              "description": "Equipment name"
-            },
-            "gifUrl": {
-              "type": "string",
-              "description": "Exercises gif"
+              "description": "filter type"
             },
             "name": {
               "type": "string",
-              "description": "Name"
+              "description": "filter details"
             },
-            "target": {
+            "imgURL": {
               "type": "string",
-              "description": "Target name"
-            },
-            "burnedCalories": {
-              "type": "number",
-              "description": "Burned calories"
-            },
-            "time": {
-              "type": "number",
-              "description": "Exercise time"
+              "description": "Exercises gif"
             }
           }
         }
       },
+
       "ExercisesFiltersResponse": {
         "type": "array",
         "items": {
