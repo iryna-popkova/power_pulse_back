@@ -7,7 +7,7 @@ const validateParams = (req, res, next) => {
     next(HttpError(400), error.message);
   }
 
-  if (!isValidDate(date)) {
+  if (date && !isValidDate(date)) {
     next(HttpError(400), error.message);
   }
 
