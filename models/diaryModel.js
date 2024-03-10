@@ -49,6 +49,10 @@ const diarySchema = new Schema(
           required: true,
           min: 1,
         },
+        _id: {
+          type: Schema.Types.ObjectId,
+          auto: true,
+        },
       },
     ],
     addExercises: [
