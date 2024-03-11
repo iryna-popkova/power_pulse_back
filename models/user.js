@@ -69,6 +69,7 @@ const userSchema = new Schema(
         },
         message: "The user must be older than 18 years",
       },
+      default: "01-01-2006",
     },
     avatarURL: {
       type: String,
