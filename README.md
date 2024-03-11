@@ -1,4 +1,4 @@
-[Power Pulse Project](../../GoIT/power_pulse_back/PowerPulseHome.png)
+![Image alt](https://github.com/iryna-popkova/power_pulse_back/raw/main/PowerPulseHome.png)
 
 # Project Title
 
