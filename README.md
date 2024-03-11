@@ -13,7 +13,7 @@ Communication with the database is provided by using [mongoose](https://mongoose
 ## Documentation
 
 Full information on handling endpoints and schemas is available within the
-[Power Pulse API](https://app.swaggerhub.com/apis-docs/IRKAODESA/power-pulse_api/2.0.3) created using [swagger-ui-express](https://www.npmjs.com/package/swagger-ui-express)
+[Power Pulse API](https://app.swaggerhub.com/apis-docs/IrynaPopkova/PowerPulseProject/2.0.4) created using [swagger-ui-express](https://www.npmjs.com/package/swagger-ui-express)
 
 ## Figma design project
 
@@ -25,7 +25,7 @@ npm install — start;
 
 npm start — server start in production mode;
 
-npm run start:dev — start the server in development mode
+npm run dev — start the server in development mode
 
 ## Backened development team :
 
