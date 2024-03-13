@@ -97,25 +97,51 @@ const userSchema = new Schema(
 userSchema.post("save", handleMongooseError);
 
 const registerSchema = Joi.object({
-  name: Joi.string().required(),
-  email: Joi.string().pattern(emailRegex).required(),
-  password: Joi.string().min(6).required(),
+  name: Joi.string().required().messages({
+    "any.required": `Missing required name field`,
+  }),
+  email: Joi.string().pattern(emailRegex).required().messages({
+    "any.required": `Missing required email field`,
+  }),
+  password: Joi.string().min(6).required().messages({
+    "any.required": `Missing required password field`,
+  }),
 });
 
 const loginSchema = Joi.object({
-  email: Joi.string().pattern(emailRegex).required(),
-  password: Joi.string().min(6).required(),
+  email: Joi.string().pattern(emailRegex).required().messages({
+    "any.required": `Missing required email field`,
+  }),
+  password: Joi.string().min(6).required().messages({
+    "any.required": `Missing required password field`,
+  }),
 });
 
 const updateParamsSchema = Joi.object({
-  name: Joi.string().min(2).max(30).required(),
-  blood: Joi.number().valid(1, 2, 3, 4).required(),
-  sex: Joi.string().valid("male", "female").required(),
-  height: Joi.number().min(150).required(),
-  currentWeight: Joi.number().min(35).required(),
-  desiredWeight: Joi.number().min(35).required(),
-  levelActivity: Joi.number().valid(1, 2, 3, 4, 5).required(),
-  birthday: Joi.date().required(),
+  name: Joi.string().min(2).max(30).required().messages({
+    "any.required": `Missing required name field`,
+  }),
+  blood: Joi.number().valid(1, 2, 3, 4).required().messages({
+    "any.required": `Missing required blood field`,
+  }),
+  sex: Joi.string().valid("male", "female").required().messages({
+    "any.required": `Missing required sex field`,
+  }),
+  height: Joi.number().min(150).required().messages({
+    "any.required": `Missing required height field`,
+  }),
+  currentWeight: Joi.number().min(35).required().messages({
+    "any.required": `Missing required current weigth field`,
+  }),
+  desiredWeight: Joi.number().min(35).required().messages({
+    "any.required": `Missing required desired weight field`,
+  }),
+  levelActivity: Joi.number().valid(1, 2, 3, 4, 5).required().messages({
+    "any.required": `Missing required level activity field`,
+  }),
+  birthday: Joi.date().required().messages({
+    "any.required": `Missing required birthday field`,
+  }),
 });
 
 const schemas = {
